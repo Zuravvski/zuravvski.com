@@ -1,0 +1,1 @@
+export type Stylizable<T> = T & { className?: string };
