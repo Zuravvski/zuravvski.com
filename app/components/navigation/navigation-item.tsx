@@ -16,7 +16,7 @@ export const NavigationItem = ({ link, active }: NavigationItemProps) => {
           "relative block px-3 py-2 transition hover:text-teal-400",
           active && "text-teal-400"
         )}
-        onClick={() => link.onClick?.(link)}
+        onClick={() => link.onClick?.(link.href)}
       >
         {link.name}
         {active && (

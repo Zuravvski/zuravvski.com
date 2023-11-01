@@ -3,7 +3,7 @@ import { NavigationItem } from "./navigation-item";
 export interface NavigationLink {
   href: string;
   name: string;
-  onClick?: (link : NavigationLink) => void;
+  onClick?: (href: string) => void;
 }
 
 type NavigationProps = {

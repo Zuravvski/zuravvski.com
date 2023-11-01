@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { Navigation, NavigationLink } from "./components";
 import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
@@ -14,10 +14,10 @@ export default function Home() {
   ];
 
   const activeSection = useWhichOnScreen(sectionRefs, 0.4);
-
-  const onClick = (link: NavigationLink) => {
+  
+  const onClick = useCallback((href: string) => {
     const target = sectionRefs.find(
-      (x) => x.current?.getAttribute("id") === link.href
+      (x) => x.current?.getAttribute("id") === href
     );
 
     if (!target?.current) {
@@ -34,7 +34,14 @@ export default function Home() {
       padding;
 
     window.scrollTo({ top: offset, behavior: "smooth" });
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (window.location.hash) {
+      onClick(window.location.hash);
+    }
+  }, [onClick]);
 
   return (
     <>
