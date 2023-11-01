@@ -11,12 +11,13 @@ import clsx from "clsx";
 import { OfferItem } from "./offer-item";
 import { Heading } from "../../components";
 import { Stylizable } from "../../types/stylizable";
+import { forwardRef } from "react";
 
 type OfferProps = Stylizable<{}>;
 
-export const Offer = ({ className }: OfferProps) => {
+export const Offer = forwardRef<HTMLElement, OfferProps>(({ className }: OfferProps, ref) => {
   return (
-    <section className={clsx(className && className)}>
+    <section id="#offer" ref={ref} className={clsx(className && className)}>
       <Heading text="What I can offer" className="mb-4" />
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 text-zinc-400 mt-8">
         <OfferItem
@@ -52,4 +53,4 @@ export const Offer = ({ className }: OfferProps) => {
       </ul>
     </section>
   );
-};
+});

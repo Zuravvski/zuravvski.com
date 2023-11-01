@@ -1,15 +1,61 @@
-import { Experience, Footer, Header, Hero } from "./sections";
-import { Offer } from "./sections/offer";
+"use client";
+
+import { useRef } from "react";
+
+import { Navigation, NavigationLink } from "./components";
+import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
+import { useWhichOnScreen } from "./hooks";
 
 export default function Home() {
+  const sectionRefs = [
+    useRef<HTMLElement>(null),
+    useRef<HTMLElement>(null),
+    useRef<HTMLElement>(null),
+  ];
+
+  const activeSection = useWhichOnScreen(sectionRefs, 0.4);
+
+  const onClick = (link: NavigationLink) => {
+    const target = sectionRefs.find(
+      (x) => x.current?.getAttribute("id") === link.href
+    );
+
+    if (!target?.current) {
+      return;
+    }
+
+    const padding = parseInt(
+      window.getComputedStyle(target.current).getPropertyValue("padding-top"),
+      10
+    );
+    const offset =
+      target.current.getBoundingClientRect().top -
+      document.body.getBoundingClientRect().top -
+      padding;
+
+    window.scrollTo({ top: offset, behavior: "smooth" });
+  };
+
   return (
     <>
-      <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-8">
-        <Header />
-        <main className="pl-3 py-20">
+      <Header>
+        <Navigation
+          links={[
+            { href: "#offer", name: "Offer", onClick: onClick },
+            { href: "#experience", name: "Experience", onClick: onClick },
+            { href: "#skills", name: "Skills", onClick: onClick },
+            { href: "#projects", name: "Projects", onClick: onClick },
+            { href: "/blog", name: "Blog" },
+          ]}
+          activeLink={activeSection}
+        />
+      </Header>
+      <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-8 px-12">
+        <main className="py-20 pl-3">
           <Hero />
-          <Offer className="py-10" />
-          <Experience className="py-10" />
+          <Offer ref={sectionRefs[0]} className="py-10" />
+          <Experience ref={sectionRefs[1]} className="py-10" />
+          <Skills ref={sectionRefs[2]} className="py-10" />
         </main>
         <Footer className="mt-auto" />
       </div>
