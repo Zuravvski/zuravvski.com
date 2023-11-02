@@ -17,7 +17,7 @@ export const OfferItem = ({ icon, title, description }: OfferItemProps) => {
           className="w-5 h-5 text-zinc-100 group-hover:text-teal-500 transition-colors"
         />
       </i>
-      <h2 className="text-zinc-100 mt-6 text-base font-semibold">{title}</h2>
+      <h2 className="text-zinc-100 mt-4 md:mt-6 text-base font-semibold">{title}</h2>
       <p className="mt-2 text-sm">{description}</p>
     </li>
   );

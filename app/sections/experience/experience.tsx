@@ -15,9 +15,9 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
         ref={ref}
         className={clsx(className && className)}
       >
-        <Heading text="My experience so far" className="mb-8" />
+        <Heading text="My experience so far" className="mb-5 md:mb-8" />
         <div className="md:border-l md:pl-6 md:border-zinc-700/40">
-          <div className="flex flex-col space-y-16">
+          <div className="flex flex-col space-y-12 md:space-y-16">
             <ExperienceItem
               name="FABRITY"
               position="Software Architect"

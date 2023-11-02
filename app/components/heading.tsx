@@ -8,6 +8,6 @@ export type HeadingProps = Stylizable<{
 
 export const Heading = ({ as: Tag = 'h2', text, className }: HeadingProps) => {
   return (
-    <Tag className={clsx("font-bold text-zinc-100 text-4xl", className && className)}>{text}</Tag>
+    <Tag className={clsx("font-bold text-zinc-100 text-3xl md:text-4xl", className && className)}>{text}</Tag>
   );
 }

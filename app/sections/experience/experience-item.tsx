@@ -75,7 +75,7 @@ export const ExperienceItem = ({
         </h2>
         <div className="mt-2 text-sm text-zinc-400 space-y-6">{children}</div>
         {!!tags?.length && (
-          <ul className="mt-6 space-x-2 flex">
+          <ul className="mt-6 gap-1 md:gap-2 flex flex-wrap">
             {tags.map((tag, i) => (
               <li key={i}>
                 <Chip text={`#${tag}`} className="bg-none bg-zinc-700 inline-block" />
@@ -83,7 +83,7 @@ export const ExperienceItem = ({
             ))}
           </ul>
         )}
-        <ul className={clsx("text-center text-2xl flex mt-4 space-x-3", !!tags?.length && 'mt-6')}>
+        <ul className={clsx("text-center text-2xl flex mt-4 gap-3 flex-wrap", !!tags?.length && 'mt-6')}>
           {skills.map((skill, i) => (
             <DevIcon key={i} icon={skill} colored={hovered}></DevIcon>
           ))}

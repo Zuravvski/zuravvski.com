@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { Navigation, NavigationLink } from "./components";
+import { Navigation } from "./components";
 import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
 import { useWhichOnScreen } from "./hooks";
 
@@ -25,7 +25,7 @@ export default function Home() {
     }
 
     const padding = parseInt(
-      window.getComputedStyle(target.current).getPropertyValue("padding-top"),
+      window.getComputedStyle(target.current).getPropertyValue("margin-top"),
       10
     );
     const offset =
@@ -33,7 +33,7 @@ export default function Home() {
       document.body.getBoundingClientRect().top -
       padding;
 
-    window.scrollTo({ top: offset, behavior: "smooth" });
+      window.scrollTo({ top: offset, behavior: "smooth" });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -57,12 +57,12 @@ export default function Home() {
           activeLink={activeSection}
         />
       </Header>
-      <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-8 px-12">
-        <main className="py-20 pl-3">
+      <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-8 px-8 md:px-12">
+        <main className="py-8 md:py-20 pl-3 space-y-16">
           <Hero />
-          <Offer ref={sectionRefs[0]} className="py-10" />
-          <Experience ref={sectionRefs[1]} className="py-10" />
-          <Skills ref={sectionRefs[2]} className="py-10" />
+          <Offer ref={sectionRefs[0]} />
+          <Experience ref={sectionRefs[1]} />
+          <Skills ref={sectionRefs[2]} />
         </main>
         <Footer className="mt-auto" />
       </div>
