@@ -35,7 +35,7 @@ export const Header = ({ className, children }: HeaderProps) => {
       ref={ref}
       className={clsx('pt-8 transition-colors duration-350 ease-in', sticky && 'sticky top-0 bg-zinc-950 z-10 !pt-0', className && className)}
     >
-      <div className="lg:max-w-6xl grid grid-cols-2 lg:grid-cols-3 items-center px-12 mx-auto">
+      <div className="lg:max-w-6xl grid grid-cols-2 lg:grid-cols-3 items-center px-8 md:px-12 mx-auto">
         <Link href="/">
           <Image src={"/logo.png"} alt="Logo" width={200} height={100} />
         </Link>

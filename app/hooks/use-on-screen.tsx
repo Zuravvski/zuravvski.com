@@ -21,13 +21,13 @@ export const useOnScreen = (ref: MutableRefObject<Element | null>): boolean => {
 
 export const useWhichOnScreen = (
   refs: MutableRefObject<Element | null>[],
-  threshold?: number
+  threshold?: number | number[]
 ): string | null => {
   const [elementOnScreen, setElementOnScreen] = useState<string | null>(null);
 
   useEffect(() => {
     const validRefs = refs.filter(
-      (ref) => ref.current && ref.current.getAttribute("id")
+      (ref) => ref.current && ref.current.getAttribute("data-anchor")
     );
 
     if (validRefs.length === 0) {
@@ -40,11 +40,11 @@ export const useWhichOnScreen = (
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setElementOnScreen(ref.current!.getAttribute("id"));
+            setElementOnScreen(ref.current!.getAttribute("data-anchor"));
           }
         },
         {
-          threshold: threshold ?? 0.56,
+          threshold: threshold ?? 0.56
         }
       );
 

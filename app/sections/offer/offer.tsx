@@ -17,7 +17,7 @@ type OfferProps = Stylizable<{}>;
 
 export const Offer = forwardRef<HTMLElement, OfferProps>(({ className }: OfferProps, ref) => {
   return (
-    <section id="#offer" ref={ref} className={clsx(className && className)}>
+    <section data-anchor="offer" ref={ref} className={clsx(className && className)}>
       <Heading text="What I can offer" className="mb-4" />
       <ul className="grid grid-cols-1 gap-x-12 gap-y-12 md:gap-y-16 sm:grid-cols-2 lg:grid-cols-3 text-zinc-400 mt-8">
         <OfferItem

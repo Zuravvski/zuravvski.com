@@ -4,14 +4,13 @@ import clsx from "clsx";
 import { Heading } from "../../components";
 import { Stylizable } from "../../types/stylizable";
 import { SkillItem } from "./skill-item";
-import { SkillBar } from "./skill-bar";
 
-type SkillProps = Stylizable;
+type SkillsProps = Stylizable;
 
-export const Skills = forwardRef<HTMLElement, SkillProps>(
+export const Skills = forwardRef<HTMLElement, SkillsProps>(
   ({ className }, ref) => {
     return (
-      <section id="#skills" ref={ref} className={clsx(className && className)}>
+      <section data-anchor="skills" ref={ref} className={clsx(className && className)}>
         <Heading text="What I am good at" className="mb-5 md:mb-8" />
         <div className="grid lg:grid-cols-2 gap-8">
           <SkillItem
@@ -52,7 +51,7 @@ export const Skills = forwardRef<HTMLElement, SkillProps>(
               "ESLint",
               "Axios",
               "D3.js",
-              "RWD"
+              "RWD",
             ]}
           >
             <p>
@@ -109,10 +108,10 @@ export const Skills = forwardRef<HTMLElement, SkillProps>(
               "Mapperly",
               "Automapper",
               "Azure DevOps",
-              "Github Actions"
+              "Github Actions",
             ]}
-            primaryBackgroundClass="bg-rose-600"
-            primaryTextClass="text-rose-500"
+            primaryBackgroundClass="bg-indigo-600"
+            primaryTextClass="text-indigo-500"
           >
             <p>
               My backend programming approach revolves around three core

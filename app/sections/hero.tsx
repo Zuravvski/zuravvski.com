@@ -10,7 +10,7 @@ type HeroProps = Stylizable;
 export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
   return (
     <section
-      id="#about"
+      data-anchor='about'
       ref={ref}
       className={clsx(
         "grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12",

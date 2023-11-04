@@ -11,7 +11,7 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
   ({ className }, ref) => {
     return (
       <section
-        id="#experience"
+        data-anchor="experience"
         ref={ref}
         className={clsx(className && className)}
       >
