@@ -39,7 +39,7 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
           text="Development · Leadership · Architecture"
           className="text-zinc-100"
         />
-        <p className="text-4xl font-bold text-zinc-100">
+        <p className="text-2xl lg:text-4xl font-bold text-zinc-100">
           Hi! My name is Michał Żurawski and I am ready to turn your next dream
           initiative into reality!
         </p>
