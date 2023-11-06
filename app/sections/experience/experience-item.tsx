@@ -9,10 +9,15 @@ import clsx from "clsx";
 import { Chip, DevIcon, DevIconType } from "../../components";
 import { WithChildren } from "../../types/with-children";
 
+interface Skill {
+  icon: DevIconType;
+  tooltip?: string;
+}
+
 type ExperienceItemProps = WithChildren<{
   name: string;
   position: string;
-  skills: DevIconType[];
+  skills: Skill[];
   tags?: string[];
   from: string;
   to?: string;
@@ -78,14 +83,22 @@ export const ExperienceItem = ({
           <ul className="mt-6 gap-1 md:gap-2 flex flex-wrap">
             {tags.map((tag, i) => (
               <li key={i}>
-                <Chip text={`#${tag}`} className="bg-none bg-zinc-700 inline-block" />
+                <Chip
+                  text={`#${tag}`}
+                  className="bg-none bg-zinc-700 inline-block"
+                />
               </li>
             ))}
           </ul>
         )}
-        <ul className={clsx("text-center text-2xl flex mt-4 gap-3 flex-wrap", !!tags?.length && 'mt-6')}>
+        <ul
+          className={clsx(
+            "text-center text-2xl flex mt-4 gap-3 flex-wrap",
+            !!tags?.length && "mt-6"
+          )}
+        >
           {skills.map((skill, i) => (
-            <DevIcon key={i} icon={skill} colored={hovered}></DevIcon>
+            <DevIcon key={i} icon={skill.icon} colored={hovered} tooltip={skill.tooltip}></DevIcon>
           ))}
         </ul>
       </div>

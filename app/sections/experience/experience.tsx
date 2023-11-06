@@ -23,14 +23,14 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               position="Software Architect"
               from="March 2022"
               skills={[
-                "dotnetcore",
-                "dot-net",
-                "microsoftsqlserver",
-                "react",
-                "redux",
-                "sass",
-                "bootstrap",
-                "webpack",
+                { icon: "dotnetcore", tooltip: ".NET 6" },
+                { icon: "dot-net", tooltip: ".NET Framework 4.7.2" },
+                { icon: "microsoftsqlserver", tooltip: "MS SQL Server 2019" },
+                { icon: "react", tooltip: "React 16" },
+                { icon: "redux", tooltip: "Redux" },
+                { icon: "sass", tooltip: "SCSS" },
+                { icon: "bootstrap", tooltip: "Bootstrap 3" },
+                { icon: "webpack", tooltip: "Webpack" },
               ]}
               tags={["Leadership", "Architecture", "Backend", "Frontend"]}
               url="https://fabrity.com"
@@ -61,7 +61,13 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               position="Chief Technology Officer"
               from="April 2021"
               to="January 2023"
-              skills={["php", "wordpress", "sass", "bootstrap", "gulp"]}
+              skills={[
+                { icon: "php", tooltip: "PHP 8" },
+                { icon: "wordpress", tooltip: "Wordpress" },
+                { icon: "sass", tooltip: "SCSS" },
+                { icon: "bootstrap", tooltip: "Bootstrap 5" },
+                { icon: "gulp", tooltip: "Gulp" },
+              ]}
               tags={["Leadership", "Management", "Backend", "Frontend"]}
             >
               <p>
@@ -81,14 +87,14 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               from="June 2020"
               to="January 2021"
               skills={[
-                "angularjs",
-                "dotnetcore",
-                "postgresql",
-                "kubernetes",
-                "docker",
-                "nginx",
-                "sass",
-                "webpack",
+                { icon: "angularjs", tooltip: "Angular 12" },
+                { icon: "dotnetcore", tooltip: ".NET Core 3.1" },
+                { icon: "postgresql", tooltip: "PostgreSQL" },
+                { icon: "kubernetes", tooltip: "Kubernetes" },
+                { icon: "docker", tooltip: "Docker" },
+                { icon: "nginx", tooltip: "nginx" },
+                { icon: "sass", tooltip: "SCSS" },
+                { icon: "webpack", tooltip: "Webpack" },
               ]}
               url="https://fabrity.com"
               tags={["Leadership", "Frontend", "Backend", "Architecture"]}
@@ -105,15 +111,14 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               from="October 2019"
               to="June 2020"
               skills={[
-                "dotnetcore",
-                "angularjs",
-                "postgresql",
-                "mongodb",
-                "docker",
-                "nginx",
-                "sass",
-                "webpack",
-                "amazonwebservices",
+                { icon: "dotnetcore", tooltip: ".NET Core 3.1" },
+                { icon: "angularjs", tooltip: "Angular 8 & 9" },
+                { icon: "postgresql", tooltip: "Postgres" },
+                { icon: "mongodb", tooltip: "MongoDB" },
+                { icon: "docker", tooltip: "Docker" },
+                { icon: "nginx", tooltip: "nginx" },
+                { icon: "sass", tooltip: "SCSS" },
+                { icon: "webpack", tooltip: "Webpack" },
               ]}
               url="https://www.umlaut.com"
               tags={["Backend", "Leadership", "Frontend", "Architecture"]}
@@ -129,7 +134,11 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               position="Software Engineer"
               from="July 2018"
               to="October 2019"
-              skills={["dotnetcore", "dot-net", "microsoftsqlserver"]}
+              skills={[
+                { icon: "dotnetcore", tooltip: ".NET Core 2.1" },
+                { icon: "dot-net", tooltip: ".NET Framework 4.7.2" },
+                { icon: "microsoftsqlserver", tooltip: "" },
+              ]}
               url="https://codelab.eu"
               tags={["Backend", "Leadership", "Embedded", "Automotive"]}
             >
@@ -144,7 +153,10 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               position="Programming Coach"
               from="December 2018"
               to="June 2019"
-              skills={["java", "spring"]}
+              skills={[
+                { icon: "java", tooltip: "Java" },
+                { icon: "spring", tooltip: "Spring Framework" },
+              ]}
               url="https://sdacademy.pl"
               tags={["Mentoring"]}
             >
@@ -160,12 +172,12 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               from="May 2017"
               to="June 2018"
               skills={[
-                "cplusplus",
-                "react",
-                "redux",
-                "nodejs",
-                "java",
-                "spring",
+                { icon: "cplusplus", tooltip: "C++ / C++11" },
+                { icon: "react", tooltip: "React 15" },
+                { icon: "redux", tooltip: "Redux" },
+                { icon: "nodejs", tooltip: "Node 8" },
+                { icon: "java", tooltip: "Java" },
+                { icon: "spring", tooltip: "Spring Framework" },
               ]}
               url="https://www.avid.com"
               tags={["Embedded", "Audio", "Video", "Backend", "Frontend"]}
@@ -181,7 +193,11 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
               position="Junior Software Engineer"
               from="October 2016"
               to="April 2017"
-              skills={["cplusplus", "java", "python"]}
+              skills={[
+                { icon: "cplusplus", tooltip: "C++11" },
+                { icon: "java", tooltip: "Java" },
+                { icon: "python", tooltip: 'Python 3' },
+              ]}
               url="https://www.linkedin.com/company/infinit-cl/about"
               tags={["Automotive", "Embedded", "HMI"]}
             >

@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('../node_modules/devicon/devicon.min.css');
+@import url("../node_modules/devicon/devicon.min.css");
+
+.react-tooltip {
+  @apply !inline-block !px-3 !py-2 !text-sm !font-medium !text-zinc-100 !transition-opacity !duration-300 !rounded-lg !shadow-sm !bg-zinc-800;
+}
