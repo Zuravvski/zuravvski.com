@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { MobileNavigation, Navigation } from "./components";
+import { Navigation, MobileNavigation } from "@/app/components/navigation";
 import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
 
 export default function Home() {
@@ -23,14 +23,14 @@ export default function Home() {
       return;
     }
 
-    const padding = parseInt(
+    const margin = parseInt(
       window.getComputedStyle(target.current).getPropertyValue("margin-top"),
       10
     );
     const offset =
       target.current.getBoundingClientRect().top -
       document.body.getBoundingClientRect().top -
-      padding;
+      margin;
 
     window.scrollTo({ top: offset, behavior: "smooth" });
     // eslint-disable-next-line react-hooks/exhaustive-deps

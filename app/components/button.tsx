@@ -1,5 +1,5 @@
+import { Stylizable } from "@/app/types/stylizable";
 import clsx from "clsx";
-import { Stylizable } from "../types/stylizable";
 
 type ButtonProps = Stylizable<{
   as?: "button" | "a";

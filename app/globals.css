@@ -7,3 +7,99 @@
 .react-tooltip {
   @apply !inline-block !px-3 !py-2 !text-sm !font-medium !text-zinc-100 !transition-opacity !duration-300 !rounded-lg !shadow-sm !bg-zinc-800;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply rounded bg-zinc-300;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-zinc-700/90;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-zinc-700;
+}
+
+.blog-article blockquote {
+  @apply p-4 my-4 border-l-4 border-teal-700 bg-zinc-800 text-zinc-300;
+}
+
+.blog-article a {
+  @apply text-teal-500 relative;
+}
+
+.blog-article a::after {
+  content: '';
+  @apply absolute left-0 bottom-[1px] w-full h-[2px] transition-colors bg-teal-500/60 hover:bg-teal-500;
+}
+
+.blog-article h1 {
+  @apply text-4xl text-zinc-200 font-semibold;
+}
+
+.blog-article h2 {
+  @apply text-2xl text-zinc-200 font-semibold;
+  
+}
+
+.blog-article h3 {
+  @apply text-xl text-zinc-200 font-semibold;
+  
+}
+
+.blog-article h4 {
+  @apply text-lg text-zinc-200 font-semibold;
+}
+
+.blog-article h5 {
+  @apply text-base text-zinc-200 font-semibold;
+  
+}
+
+.blog-article ul {
+  @apply list-disc pl-4;
+}
+
+.blog-article ol {
+  @apply list-decimal pl-4;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro {
+  @apply !mt-0 relative;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro > span:first-child {
+  @apply rounded-t-lg py-3 px-4 font-serif;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro > span[role=button] {
+  @apply !block absolute top-[7px] right-3 transition-colors !text-zinc-300/40;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro > span[role=button]:hover {
+  @apply !text-zinc-300;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro > pre {
+  @apply rounded-b-lg py-3 px-4;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers > pre .line {
+  counter-increment: step;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover > pre .line {
+  @apply inline-block w-full hover:bg-zinc-800;
+}
+
+.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers > pre .line::before {
+  content: counter(step);
+  @apply mr-3 text-zinc-300/40;
+}

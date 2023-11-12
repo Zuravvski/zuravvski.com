@@ -1,9 +1,10 @@
 import Image from "next/image";
 import clsx from "clsx";
+import { forwardRef } from "react";
 
 import { Stylizable } from "../types/stylizable";
-import { Chip, Dots } from "../components";
-import { forwardRef } from "react";
+import { Dots } from "../components/dots";
+import { Chip } from "../components/chip";
 
 type HeroProps = Stylizable;
 
