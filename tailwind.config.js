@@ -17,6 +17,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("tailwindcss-text-fill"),
     plugin(function ({ addVariant, e }) {
       addVariant('not-first', ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {

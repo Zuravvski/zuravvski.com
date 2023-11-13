@@ -5,8 +5,8 @@ import { Archives, Categories, Posts } from "./sections";
 import { PostApi } from "./data-access/posts-api";
 
 export default async function Blog() {
-  const postsViewModel = await PostApi.getPostsPage(10);
-  const archiveViewModel = await PostApi.getArchive(10);
+  const postsViewModel = await PostApi.getPostsPage({ revalidate: 10 });
+  const archiveViewModel = await PostApi.getArchive({ revalidate: 10 });
 
   return (
     <>

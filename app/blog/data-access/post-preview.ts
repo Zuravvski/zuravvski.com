@@ -3,6 +3,7 @@ import { AuthorViewModel } from "./author";
 import { FeaturedImageViewModel } from "./featured-image";
 import { CategoryViewModel } from "./category";
 import { PageInfo } from "./page-info";
+import { ReadingTimeViewModel } from "./reading-time";
 
 export interface PostsPageGraphQlResponse {
   posts: GraphQlNodes<any>; // deliberate any
@@ -19,6 +20,7 @@ export interface PostPreviewViewModel {
   excerpt: string;
   featuredImage: FeaturedImageViewModel;
   categories: CategoryViewModel[];
+  readingTime: ReadingTimeViewModel;
 }
 
 export interface PostsPageViewModel {

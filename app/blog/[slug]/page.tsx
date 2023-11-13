@@ -10,7 +10,7 @@ interface Params {
 }
 
 export default async function Page({ params }: Params) {
-  const viewModel = await PostApi.getPost(params.slug, 30);
+  const viewModel = await PostApi.getPost(params.slug, { revalidate: 30 });
 
   return (
     <>
@@ -45,8 +45,8 @@ export default async function Page({ params }: Params) {
         }
       ></Header>
       <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-0 md:py-8 px-8 md:px-12">
-        <div className="flex flex-col pl-3 my-8 lg:my-16 ">
-          <main className="space-y-16 col-span-3 mx-auto max-w-2xl">
+        <div className="flex flex-col pl-3 my-8 lg:my-16">
+          <main className="space-y-16 col-span-3 mx-auto max-w-2xl w-full">
             <Post post={viewModel!.post} />
           </main>
         </div>

@@ -14,13 +14,13 @@ export async function graphQlMutation(
   await fetch("http://zuravvski.local/graphql", {
     headers,
     method: "POST",
-    body: JSON.stringify(query)
+    body: JSON.stringify(query),
   });
 }
 
 export async function graphQlQuery<T extends object>(
   query: GraphQlQueryRequest,
-  revalidate?: number
+  nextConfig?: NextFetchRequestConfig
 ): Promise<GraphQlResponse<T>> {
   const headers = { "Content-Type": "application/json" };
 
@@ -28,7 +28,7 @@ export async function graphQlQuery<T extends object>(
     headers,
     method: "POST",
     body: JSON.stringify(query),
-    next: { revalidate },
+    next: nextConfig,
   });
 
   return await response.json();

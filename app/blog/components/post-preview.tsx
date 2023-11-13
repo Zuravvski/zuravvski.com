@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthorViewModel } from "../data-access/author";
 import { FeaturedImage } from "./featured-image";
+import { getReadingTime } from "../data-access/reading-time";
 
 interface PostPreviewProps {
   post: PostPreviewViewModel;
@@ -48,11 +49,11 @@ export const PostPreview = ({ post }: PostPreviewProps) => {
           </span>
           <span className="flex items-center">
             <FontAwesomeIcon icon={faBookmark} className="mr-2" />
-            <p>6 min</p>
+            <p>{getReadingTime(post.readingTime)}</p>
           </span>
         </div>
         <FeaturedImage post={post} className="mb-4" />
-        <p
+        <div
           className="mb-4"
           dangerouslySetInnerHTML={{ __html: post.excerpt }}
         />

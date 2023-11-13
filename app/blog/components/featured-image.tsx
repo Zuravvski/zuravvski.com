@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { Stylizable } from "@/app/types/stylizable";
 import clsx from "clsx";
@@ -21,7 +20,7 @@ export const FeaturedImage = ({ post, className }: FeaturedImageProps) => {
   }
 
   const size = post.featuredImage.mediaDetails.sizes[0];
-  const image = (
+  return (
     <Image
       src={size.sourceUrl!}
       width={size.width}
@@ -29,19 +28,5 @@ export const FeaturedImage = ({ post, className }: FeaturedImageProps) => {
       alt={post.title}
       className={clsx("w-full", className && className)}
     />
-  );
-
-  return post.slug ? (
-    <Link href={`/blog/${post.slug}`}>
-      <Image
-        src={size.sourceUrl!}
-        width={size.width}
-        height={size.height}
-        alt={post.title}
-        className={clsx("w-full", className && className)}
-      />
-    </Link>
-  ) : (
-    <>{image}</>
   );
 };

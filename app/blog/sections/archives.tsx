@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ArchiveEntry, ArchiveViewModel } from "../data-access/archive";
 import { format, parseISO } from "date-fns";
 import countBy from "lodash/countBy";
+import { ShowMore } from "@/app/shared/ui";
 
 type ArchivesProps = Stylizable<{
   archives: ArchiveViewModel;
@@ -34,21 +35,23 @@ export const Archives = ({ archives, className }: ArchivesProps) => {
   return (
     <section className={clsx(className && className)}>
       <Heading as="h3" text="Archives" className="!text-lg text-zinc-300" />
-      <ul className="mt-2 space-y-2 text-sm">
-        {entries.map((entry, i) => (
-          <li key={i}>
-            <Link
-              href={`/blog/archives/${entry.date.getFullYear()}/${entry.date.getMonth() + 1}`}
-              className="transition-colors hover:text-teal-500 flex items-center space-x-2"
-            >
-              <FontAwesomeIcon icon={faBoxArchive} />
-              <p>
-                {format(entry.date, "MMMM yyyy")} ({entry.count})
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <ShowMore>
+        <ul className="mt-2 space-y-2 text-sm">
+          {entries.map((entry, i) => (
+            <li key={i}>
+              <Link
+                href={`/blog/archives/${entry.date.getFullYear()}/${entry.date.getMonth() + 1}`}
+                className="transition-colors hover:text-teal-500 flex items-center space-x-2"
+              >
+                <FontAwesomeIcon icon={faBoxArchive} />
+                <p>
+                  {format(entry.date, "MMMM yyyy")} ({entry.count})
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </ShowMore>
     </section>
   );
 };

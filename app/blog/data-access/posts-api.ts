@@ -11,7 +11,7 @@ import { CommentViewModel } from "./comment";
 
 export class PostApi {
   static async getPostsPage(
-    revalidate?: number
+    nextConfig?: NextFetchRequestConfig
   ): Promise<PostsPageViewModel | null> {
     const query = {
       query: `query getPostsPage {
@@ -47,6 +47,9 @@ export class PostApi {
                 slug
               }
             }
+            readingTime {
+              readingTime
+            }
           }
           pageInfo {
             hasNextPage
@@ -66,7 +69,7 @@ export class PostApi {
 
     const response = await graphQlQuery<PostsPageGraphQlResponse>(
       query,
-      revalidate
+      nextConfig
     );
 
     return flattenGraphQlResponse<PostsPageGraphQlResponse, PostsPageViewModel>(
@@ -75,7 +78,7 @@ export class PostApi {
   }
 
   static async getArchive(
-    revalidate?: number
+    nextConfig?: NextFetchRequestConfig
   ): Promise<ArchiveViewModel | null> {
     const query = {
       query: `
@@ -90,7 +93,7 @@ export class PostApi {
 
     const response = await graphQlQuery<ArchiveGraphQlResponse>(
       query,
-      revalidate
+      nextConfig
     );
     return flattenGraphQlResponse<ArchiveGraphQlResponse, ArchiveViewModel>(
       response
@@ -99,7 +102,7 @@ export class PostApi {
 
   static async getPost(
     slug: string,
-    revalidate?: number
+    nextConfig?: NextFetchRequestConfig
   ): Promise<PostPageViewModel | null> {
     const query = {
       query: `
@@ -147,6 +150,9 @@ export class PostApi {
                   slug
                 }
               }
+              readingTime {
+                readingTime
+              }
             }
           }
         `,
@@ -154,7 +160,7 @@ export class PostApi {
 
     const response = await graphQlQuery<PostPageGraphQlResponse>(
       query,
-      revalidate
+      nextConfig
     );
 
     return flattenGraphQlResponse<PostPageGraphQlResponse, PostPageViewModel>(
@@ -162,7 +168,10 @@ export class PostApi {
     );
   }
 
-  static async createComment(postId: number, comment: Omit<CommentViewModel, 'id' | 'replies'>): Promise<void> {
+  static async createComment(
+    postId: number,
+    comment: Omit<CommentViewModel, "id" | "replies">
+  ): Promise<void> {
     const query = {
       query: `
         mutation createComment {
@@ -173,8 +182,8 @@ export class PostApi {
             success
           }
         }
-      `
-    }
+      `,
+    };
 
     await graphQlMutation(query);
   }

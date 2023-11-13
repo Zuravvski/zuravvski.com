@@ -60,7 +60,7 @@ export const Discussion = ({
     formState: { isSubmitting, isDirty, isValid },
   } = useForm<FormData>();
 
-  const canSubmit = !isDirty || !isValid || isSubmitting;
+  const canSubmit = isDirty && isValid && !isSubmitting;
 
   const postComment: SubmitHandler<FormData> = async (data) => {
     await PostApi.createComment(postId, {
@@ -91,7 +91,7 @@ export const Discussion = ({
             id="name"
             type="text"
             aria-label="name"
-            className="focus:ring-0 focus:outline-none text-zinc-200 placeholder-zinc-400 bg-zinc-800"
+            className="w-full focus:ring-0 focus:outline-none text-zinc-200 placeholder-zinc-400 bg-zinc-800 autofill:text-fill-zinc-200 autofill:shadow-[inset_0_0_0px_1000px_rgb(39,39,42)]"
             required
             placeholder="Your name"
             maxLength={50}
@@ -131,9 +131,12 @@ export const Discussion = ({
           type="submit"
           className={clsx(
             "inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium bg-zinc-800/50 text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50 active:bg-zinc-800/50 active:text-zinc-50/70 group",
-            canSubmit && "cursor-not-allowed"
+            {
+              ["cursor-default"]: !canSubmit,
+              ["cursor-pointer"]: canSubmit
+            }
           )}
-          disabled={canSubmit}
+          disabled={!canSubmit}
         >
           Post comment
           {isSubmitting && <Spinner size="sm" />}

@@ -13,6 +13,7 @@ import { Heading } from "@/app/components/heading";
 import Link from "next/link";
 import { Chip } from "@/app/components/chip";
 import { Discussion } from "./discussion";
+import { getReadingTime } from "../data-access/reading-time";
 
 interface PostProps {
   post: PostViewModel;
@@ -49,7 +50,7 @@ export const Post = ({ post }: PostProps) => {
         </span>
         <span className="flex items-center">
           <FontAwesomeIcon icon={faBookmark} className="mr-2" />
-          <p>6 min</p>
+          <p>{getReadingTime(post.readingTime)}</p>
         </span>
       </div>
       <FeaturedImage post={post} className="mb-4" />
