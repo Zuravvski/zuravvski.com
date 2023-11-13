@@ -17,7 +17,7 @@ interface PostPreviewProps {
 }
 
 export const PostPreview = ({ post }: PostPreviewProps) => {
-  const publishedAt = format(parseISO(post.date), "LLLL d, yyyy");
+  const publishedAt = format(parseISO(post.date), "LLL d, yyyy");
 
   const getPostAuthor = (author?: AuthorViewModel) => {
     if (!author?.username) {

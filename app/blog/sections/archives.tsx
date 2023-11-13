@@ -7,7 +7,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import { ArchiveEntry, ArchiveViewModel } from "../data-access/archive";
 import { format, parseISO } from "date-fns";
-import countBy from "lodash/countBy";
 import { ShowMore } from "@/app/shared/ui";
 
 type ArchivesProps = Stylizable<{

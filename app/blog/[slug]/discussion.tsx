@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { PostApi } from "../data-access/posts-api";
-import { Spinner } from "@/app/shared/ui";
+import { Button, Spinner } from "@/app/shared/ui";
 
 interface FormData {
   name: string;
@@ -127,12 +127,11 @@ export const Discussion = ({
             {...register("comment", { required: true })}
           ></textarea>
         </div>
-        <button
+        <Button
           type="submit"
           className={clsx(
-            "inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium bg-zinc-800/50 text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50 active:bg-zinc-800/50 active:text-zinc-50/70 group",
             {
-              ["cursor-default"]: !canSubmit,
+              ["!cursor-default"]: !canSubmit,
               ["cursor-pointer"]: canSubmit
             }
           )}
@@ -140,7 +139,7 @@ export const Discussion = ({
         >
           Post comment
           {isSubmitting && <Spinner size="sm" />}
-        </button>
+        </Button>
       </form>
       <div className="overflow-x-auto">
         <Comments

@@ -12,7 +12,7 @@ import { CommentViewModel } from "./comment";
 export class PostApi {
   static async getPostsPage(
     nextConfig?: NextFetchRequestConfig
-  ): Promise<PostsPageViewModel | null> {
+  ): Promise<PostsPageViewModel> {
     const query = {
       query: `query getPostsPage {
         posts {
@@ -72,14 +72,17 @@ export class PostApi {
       nextConfig
     );
 
-    return flattenGraphQlResponse<PostsPageGraphQlResponse, PostsPageViewModel>(
+    const ret =  flattenGraphQlResponse<PostsPageGraphQlResponse, PostsPageViewModel>(
       response
-    );
+    )!;
+
+    console.log(ret);
+    return ret;
   }
 
   static async getArchive(
     nextConfig?: NextFetchRequestConfig
-  ): Promise<ArchiveViewModel | null> {
+  ): Promise<ArchiveViewModel> {
     const query = {
       query: `
         query archive {
@@ -97,7 +100,7 @@ export class PostApi {
     );
     return flattenGraphQlResponse<ArchiveGraphQlResponse, ArchiveViewModel>(
       response
-    );
+    )!;
   }
 
   static async getPost(
