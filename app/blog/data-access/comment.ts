@@ -1,8 +1,4 @@
-export interface CommentViewModel {
-  id: string;
-  date: string;
-  author: { name: string };
-  replies: CommentViewModel[] | null;
-  content: string;
-  parentId: string | null;
-}
+import { CommentFragment, Maybe } from "@/app/gql/graphql";
+import { Optional } from "@/app/shared/core";
+
+export type CommentViewModel = CommentFragment & { replies?: Maybe<CommentFragment[]> }

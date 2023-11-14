@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import { Stylizable } from "../types/stylizable";
+import { Maybe } from "../gql/graphql";
 
 export type HeadingProps = Stylizable<{
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-  text: string;
+  text?: Maybe<string>;
 }>;
 
 export const Heading = ({ as: Tag = 'h2', text, className }: HeadingProps) => {

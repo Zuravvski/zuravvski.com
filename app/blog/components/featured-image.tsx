@@ -1,31 +1,26 @@
 import Image from "next/image";
 import { Stylizable } from "@/app/types/stylizable";
 import clsx from "clsx";
-
-import { FeaturedImageViewModel } from "../data-access/featured-image";
-
-interface PostFeaturedImage {
-  featuredImage: FeaturedImageViewModel;
-  title: string;
-  slug?: string;
-}
+import { FeaturedImageFragment, Maybe, Post } from "@/app/gql/graphql";
 
 type FeaturedImageProps = Stylizable<{
-  post: PostFeaturedImage;
+  postTitle: string;
+  featuredImage: Maybe<FeaturedImageFragment>;
 }>;
 
-export const FeaturedImage = ({ post, className }: FeaturedImageProps) => {
-  if (!post.featuredImage || !post.featuredImage?.mediaDetails?.sizes?.length) {
+export const FeaturedImage = ({ postTitle, featuredImage, className }: FeaturedImageProps) => {
+  if (!featuredImage?.mediaDetails?.sizes?.length) {
     return null;
   }
 
-  const size = post.featuredImage.mediaDetails.sizes[0];
+  const size = featuredImage.mediaDetails.sizes[0]!;
+
   return (
     <Image
       src={size.sourceUrl!}
-      width={size.width}
-      height={size.height}
-      alt={post.title}
+      width={+size.width!}
+      height={+size.height!}
+      alt={postTitle}
       className={clsx("w-full", className && className)}
     />
   );

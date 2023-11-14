@@ -1,7 +1,8 @@
 import { MobileNavigation, Navigation } from "@/app/components/navigation";
 import { Footer, Header } from "@/app/sections";
-import { PostApi } from "../data-access/posts-api";
 import { Post } from "./post";
+import { graphQlClient } from "@/app/shared/core/graphql-client";
+import { getPost } from "../data-access/post-queries";
 
 interface Params {
   params: {
@@ -9,8 +10,10 @@ interface Params {
   };
 }
 
+export const revalidate = 30;
+
 export default async function Page({ params }: Params) {
-  const viewModel = await PostApi.getPost(params.slug, { revalidate: 30 });
+  const viewModel = await graphQlClient.request(getPost, { id: params.slug });
 
   return (
     <>

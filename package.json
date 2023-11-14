@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.8.7",
@@ -24,6 +25,7 @@
     "devicon": "^2.15.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "graphql-request": "^6.1.0",
     "lodash": "^4.17.21",
     "next": "13.4.12",
     "postcss": "8.4.27",
@@ -37,6 +39,8 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
     "@types/jest": "^29.5.8",
     "@types/lodash": "^4.14.200",
     "autoprefixer": "^10.4.16",

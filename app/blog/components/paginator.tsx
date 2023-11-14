@@ -1,10 +1,10 @@
 import { Button } from "@/app/shared/ui";
-import { PageInfo } from "../data-access/page-info";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { PageInfo } from "@/app/gql/graphql";
 
 interface PaginatorProps {
-  pageInfo: PageInfo;
+  pageInfo?: PageInfo;
 }
 
 export const Paginator = ({ pageInfo }: PaginatorProps) => {

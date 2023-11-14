@@ -3,21 +3,25 @@ import { Stylizable } from "@/app/types/stylizable";
 import { Chip } from "@/app/components/chip";
 import clsx from "clsx";
 
-import { CategoryViewModel } from "../data-access/category";
 import Link from "next/link";
 import { ShowMore } from "@/app/shared/ui";
+import { GetPostsPageQuery } from "@/app/gql/graphql";
 
 type CategoriesProps = Stylizable<{
-  categories: CategoryViewModel[];
+  categories: GetPostsPageQuery['categories'];
 }>;
 
 export const Categories = ({ categories, className }: CategoriesProps) => {
+  if (!categories?.nodes) {
+    return <p>No categories available</p>
+  }
+
   return (
     <section className={clsx(className && className)}>
       <Heading as="h3" text="Categories" className="!text-lg text-zinc-300" />
       <ShowMore>
         <ul className="mt-2 gap-0.5 md:gap-1 flex flex-wrap">
-          {categories.map((category, i) => (
+          {categories.nodes.map((category, i) => (
             <li key={i}>
               <Link
                 href={`/blog/categories/${category.slug}`}

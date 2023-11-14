@@ -5,16 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 
 import Link from "next/link";
-import { ArchiveEntry, ArchiveViewModel } from "../data-access/archive";
 import { format, parseISO } from "date-fns";
 import { ShowMore } from "@/app/shared/ui";
+import { ArchiveQuery } from "@/app/gql/graphql";
 
 type ArchivesProps = Stylizable<{
-  archives: ArchiveViewModel;
+  archives: ArchiveQuery;
 }>;
 
 export const Archives = ({ archives, className }: ArchivesProps) => {
-  const postsByMonth = archives?.posts
+  if (!archives?.posts?.nodes?.length) {
+    return <p>No archives available</p>;
+  }
+
+  const postsByMonth = archives.posts!.nodes
     .filter((post) => post.date)
     .reduce((aggregate, current) => {
       const actualDate = parseISO(current.date!);
@@ -28,7 +32,7 @@ export const Archives = ({ archives, className }: ArchivesProps) => {
 
   const entries = Array.from(
     postsByMonth,
-    (entry) => ({ date: parseISO(entry[0]), count: entry[1] } as ArchiveEntry)
+    (entry) => ({ date: parseISO(entry[0]), count: entry[1] })
   ).sort((a, b) => b.date.getTime() - a.date.getTime());
 
   return (

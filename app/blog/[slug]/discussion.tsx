@@ -1,7 +1,6 @@
 "use client";
 
 import { Stylizable } from "@/app/types/stylizable";
-import { CommentViewModel } from "../data-access/comment";
 import clsx from "clsx";
 import { Heading } from "@/app/components/heading";
 import { Comments } from "./comments";
@@ -11,8 +10,10 @@ import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { PostApi } from "../data-access/posts-api";
 import { Button, Spinner } from "@/app/shared/ui";
+import { graphQlClient } from "@/app/shared/core/graphql-client";
+import { createComment } from "../data-access/comment-queries";
+import { CommentViewModel } from "../data-access/comment";
 
 interface FormData {
   name: string;
@@ -44,7 +45,7 @@ export const Discussion = ({
   useEffect(() => {
     const processedComments = TreeHelper.toTree(
       originalComments.sort(
-        (a, b) => parseISO(a.date).getTime() - parseISO(b.date).getTime()
+        (a, b) => parseISO(a.date!).getTime() - parseISO(b.date!).getTime()
       ),
       (x) => x.id,
       (x) => x.parentId,
@@ -63,13 +64,14 @@ export const Discussion = ({
   const canSubmit = isDirty && isValid && !isSubmitting;
 
   const postComment: SubmitHandler<FormData> = async (data) => {
-    await PostApi.createComment(postId, {
-      author: {
-        name: data.name,
-      },
-      content: data.comment,
-      date: new Date().toISOString(),
-      parentId: replyTo?.id ?? null,
+    await graphQlClient.request(createComment, {
+      input: {
+        author: data.name,
+        content: data.comment,
+        date: new Date().toISOString(),
+        parent: replyTo?.id ?? null,
+        commentOn: postId
+      }
     });
     setReplyTo(null);
     reset();
@@ -106,7 +108,7 @@ export const Discussion = ({
           >
             <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-zinc-800">
               <p className="mr-1">Replying to:</p>
-              <p className="font-semibold mr-2">@{replyTo.author.name}</p>
+              <p className="font-semibold mr-2">@{replyTo.author!.node.name}</p>
               <FontAwesomeIcon icon={faXmark} />
             </span>
           </div>

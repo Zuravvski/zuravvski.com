@@ -1,5 +1,4 @@
 import { format, parseISO } from "date-fns";
-import { PostPreviewViewModel } from "../data-access/post-preview";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,24 +7,17 @@ import {
   faComment,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { AuthorViewModel } from "../data-access/author";
+import { FeaturedImageFragment, PostPreviewFragment } from "@/app/gql/graphql";
 import { FeaturedImage } from "./featured-image";
 import { getReadingTime } from "../data-access/reading-time";
+import { getPostAuthor } from "../data-access/author";
 
 interface PostPreviewProps {
-  post: PostPreviewViewModel;
+  post: PostPreviewFragment;
 }
 
 export const PostPreview = ({ post }: PostPreviewProps) => {
-  const publishedAt = format(parseISO(post.date), "LLL d, yyyy");
-
-  const getPostAuthor = (author?: AuthorViewModel) => {
-    if (!author?.username) {
-      return "Anonymous";
-    }
-    const fullName = `${author.firstName} ${author.lastName}`.trim();
-    return fullName.length === 0 ? "Anonymous" : fullName;
-  };
+  const publishedAt = format(parseISO(post.date!), "LLL d, yyyy");
 
   return (
     <article className="relative group">
@@ -45,17 +37,21 @@ export const PostPreview = ({ post }: PostPreviewProps) => {
           </span>
           <span className="flex items-center">
             <FontAwesomeIcon icon={faUser} className="mr-2" />
-            <p>{getPostAuthor(post.author)}</p>
+            <p>{getPostAuthor(post.author?.node)}</p>
           </span>
           <span className="flex items-center">
             <FontAwesomeIcon icon={faBookmark} className="mr-2" />
             <p>{getReadingTime(post.readingTime)}</p>
           </span>
         </div>
-        <FeaturedImage post={post} className="mb-4" />
+        <FeaturedImage
+          postTitle={post.title!}
+          featuredImage={post.featuredImage?.node as FeaturedImageFragment}
+          className="mb-4"
+        />
         <div
           className="mb-4"
-          dangerouslySetInnerHTML={{ __html: post.excerpt }}
+          dangerouslySetInnerHTML={{ __html: post.excerpt! }}
         />
         <p className="flex items-center font-medium text-teal-500">
           Read more
