@@ -11,15 +11,25 @@ import { ArchiveQuery } from "@/app/gql/graphql";
 
 type ArchivesProps = Stylizable<{
   archives: ArchiveQuery;
+  activeArchive?: Date;
 }>;
 
-export const Archives = ({ archives, className }: ArchivesProps) => {
+export const Archives = ({
+  archives,
+  activeArchive,
+  className,
+}: ArchivesProps) => {
   if (!archives?.posts?.nodes?.length) {
-    return <p>No archives available</p>;
+    return (
+      <section className={clsx(className && className)}>
+        <Heading as="h3" text="Archives" className="!text-lg text-zinc-300" />
+        <p>No archives available</p>
+      </section>
+    );
   }
 
-  const postsByMonth = archives.posts!.nodes
-    .filter((post) => post.date)
+  const postsByMonth = archives
+    .posts!.nodes.filter((post) => post.date)
     .reduce((aggregate, current) => {
       const actualDate = parseISO(current.date!);
       const yearMonth = new Date(
@@ -30,10 +40,10 @@ export const Archives = ({ archives, className }: ArchivesProps) => {
       return aggregate;
     }, new Map<string, number>())!;
 
-  const entries = Array.from(
-    postsByMonth,
-    (entry) => ({ date: parseISO(entry[0]), count: entry[1] })
-  ).sort((a, b) => b.date.getTime() - a.date.getTime());
+  const entries = Array.from(postsByMonth, (entry) => ({
+    date: parseISO(entry[0]),
+    count: entry[1],
+  })).sort((a, b) => b.date.getTime() - a.date.getTime());
 
   return (
     <section className={clsx(className && className)}>
@@ -43,8 +53,14 @@ export const Archives = ({ archives, className }: ArchivesProps) => {
           {entries.map((entry, i) => (
             <li key={i}>
               <Link
-                href={`/blog/archives/${entry.date.getFullYear()}/${entry.date.getMonth() + 1}`}
-                className="transition-colors hover:text-teal-500 flex items-center space-x-2"
+                href={`/blog/archives/${entry.date.getFullYear()}-${
+                  entry.date.getMonth() + 1
+                }`}
+                className={clsx(
+                  "transition-colors hover:text-teal-500 flex items-center space-x-2",
+                  entry.date.getTime() === activeArchive?.getTime() &&
+                    "text-teal-500"
+                )}
               >
                 <FontAwesomeIcon icon={faBoxArchive} />
                 <p>
