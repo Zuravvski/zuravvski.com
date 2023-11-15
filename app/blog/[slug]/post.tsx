@@ -19,6 +19,7 @@ import {
   PostFragment,
 } from "@/app/gql/graphql";
 import { getPostAuthor } from "../data-access/author";
+import { BackButton } from "@/app/shared/ui";
 
 interface PostProps {
   post: PostFragment;
@@ -29,18 +30,23 @@ export const Post = ({ post }: PostProps) => {
     return null;
   }
 
-  const publishedAt = format(parseISO(post.date!), "LLLL d, yyyy");
+  const publishedAt = post.date
+    ? format(parseISO(post.date), "LLL d, yyyy")
+    : null;
 
   return (
     <div>
+      <BackButton className="mb-5" />
       <header>
         <Heading as="h1" text={post.title} className="mb-4" />
       </header>
       <div className="flex space-x-4 text-sm mb-4">
-        <span className="flex items-center">
-          <FontAwesomeIcon icon={faClock} className="mr-2" />
-          <time dateTime={publishedAt}>{publishedAt}</time>
-        </span>
+        {publishedAt && (
+          <span className="flex items-center">
+            <FontAwesomeIcon icon={faClock} className="mr-2" />
+            <time dateTime={publishedAt}>{publishedAt}</time>
+          </span>
+        )}
         <span className="flex items-center">
           <FontAwesomeIcon icon={faComment} className="mr-2" />
           <p>{post.comments?.nodes?.length ?? 0}</p>

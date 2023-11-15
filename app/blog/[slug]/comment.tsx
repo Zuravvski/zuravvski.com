@@ -19,14 +19,14 @@ export const Comment = ({ comment, reply, className }: CommentProps) => {
           <FontAwesomeIcon icon={faUser} />
         </span>
         <span className="font-semibold text-zinc-200 mr-4">
-          {comment.author.name}
+          {comment.author?.node.name}
         </span>
-        <time dateTime={comment.date}>
-          {format(parseISO(comment.date), "LLL MM, yyyy")}
+        <time dateTime={comment.date!}>
+          {format(parseISO(comment.date!), "LLL MM, yyyy")}
         </time>
       </div>
       <p
-        dangerouslySetInnerHTML={{ __html: comment.content }}
+        dangerouslySetInnerHTML={{ __html: comment.content! }}
         className="mb-2"
       ></p>
       <button className="flex items-center text-sm hover:underline">

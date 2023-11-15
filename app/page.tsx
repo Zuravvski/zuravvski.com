@@ -77,7 +77,7 @@ export default function Home() {
         }
       ></Header>
       <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-0 md:py-8 px-8 md:px-12">
-        <main className="pl-3 space-y-16 mb-8 lg:mb-16">
+        <main className="md:pl-3 space-y-16 mb-8 lg:mb-16">
           <Hero ref={sectionRefs[0]} className="mt-16" />
           <Offer ref={sectionRefs[1]} />
           <Experience ref={sectionRefs[2]} />

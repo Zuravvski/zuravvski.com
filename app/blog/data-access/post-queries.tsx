@@ -1,8 +1,14 @@
 import { graphql } from "../../gql";
 
 export const getPostsPage = graphql(`
-  query getPostsPage {
-    posts {
+  query getPostsPage($first: Int, $last: Int, $before: String, $after: String) {
+    posts(
+      first: $first
+      last: $last
+      before: $before
+      after: $after
+      where: { orderby: { field: DATE, order: DESC } }
+    ) {
       nodes {
         ...PostPreview
       }
@@ -13,7 +19,7 @@ export const getPostsPage = graphql(`
         startCursor
       }
     }
-    categories(first: 40) {
+    categories(first: 999999) {
       nodes {
         name
         slug

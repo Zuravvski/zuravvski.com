@@ -3,8 +3,9 @@ import { Footer, Header } from "@/app/sections";
 import { Post } from "./post";
 import { graphQlClient } from "@/app/shared/core/graphql-client";
 import { getPost } from "../data-access/post-queries";
+import { PostFragment } from "@/app/gql/graphql";
 
-interface Params {
+interface PostPageProps {
   params: {
     slug: string;
   };
@@ -12,7 +13,7 @@ interface Params {
 
 export const revalidate = 30;
 
-export default async function Page({ params }: Params) {
+export default async function Page({ params }: PostPageProps) {
   const viewModel = await graphQlClient.request(getPost, { id: params.slug });
 
   return (
@@ -48,9 +49,9 @@ export default async function Page({ params }: Params) {
         }
       ></Header>
       <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-0 md:py-8 px-8 md:px-12">
-        <div className="flex flex-col pl-3 my-8 lg:my-16">
+        <div className="flex flex-col md:pl-3 my-8 lg:my-16">
           <main className="space-y-16 col-span-3 mx-auto max-w-2xl w-full">
-            <Post post={viewModel!.post} />
+            <Post post={viewModel!.post as PostFragment} />
           </main>
         </div>
         <Footer className="mt-auto" />

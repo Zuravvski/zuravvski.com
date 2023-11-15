@@ -8,7 +8,7 @@ import { TreeHelper } from "@/app/shared/core/tree-helper";
 import { parseISO } from "date-fns";
 import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, Spinner } from "@/app/shared/ui";
 import { graphQlClient } from "@/app/shared/core/graphql-client";
@@ -18,6 +18,11 @@ import { CommentViewModel } from "../data-access/comment";
 interface FormData {
   name: string;
   comment: string;
+}
+
+interface SubmissionStatus {
+  text: string;
+  success: boolean;
 }
 
 export type DiscussionProps = Stylizable<{
@@ -32,6 +37,8 @@ export const Discussion = ({
 }: DiscussionProps) => {
   const [replyTo, setReplyTo] = useState<CommentViewModel | null>(null);
   const [comments, setComments] = useState<CommentViewModel[]>();
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SubmissionStatus | null>(null);
 
   const reply = useCallback(
     (comment: CommentViewModel) => {
@@ -64,14 +71,22 @@ export const Discussion = ({
   const canSubmit = isDirty && isValid && !isSubmitting;
 
   const postComment: SubmitHandler<FormData> = async (data) => {
-    await graphQlClient.request(createComment, {
+    const response = await graphQlClient.request(createComment, {
       input: {
         author: data.name,
         content: data.comment,
         date: new Date().toISOString(),
         parent: replyTo?.id ?? null,
-        commentOn: postId
-      }
+        commentOn: postId,
+      },
+    });
+    const status = response.createComment?.success
+      ? "Your comment is waiting for an approval"
+      : "Oops! Something went wrong.";
+
+    setSubmissionStatus({
+      text: status,
+      success: response.createComment?.success ?? false,
     });
     setReplyTo(null);
     reset();
@@ -84,6 +99,25 @@ export const Discussion = ({
         as="h3"
         className="!text-xl font-semibold mb-4"
       />
+      {submissionStatus && (
+        <div
+          className={clsx(
+            "flex items-center px-4 py-1.5 mb-4 bg-zinc-800 rounded-md ring-1 text-sm",
+            {
+              ["ring-teal-500/30 text-teal-500"]: submissionStatus.success,
+              ["ring-rose-500/30 text-rose-500"]: !submissionStatus.success,
+            }
+          )}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
+          <p>{submissionStatus.text}</p>
+          <FontAwesomeIcon
+            icon={faXmark}
+            className="ml-auto cursor-pointer"
+            onClick={() => setSubmissionStatus(null)}
+          />
+        </div>
+      )}
       <form className="mb-6" onSubmit={handleSubmit(postComment)}>
         <div className="py-2 px-4 mb-4 rounded-lg border bg-zinc-800 border-zinc-700">
           <label htmlFor="name" className="sr-only">
@@ -131,12 +165,10 @@ export const Discussion = ({
         </div>
         <Button
           type="submit"
-          className={clsx(
-            {
-              ["!cursor-default"]: !canSubmit,
-              ["cursor-pointer"]: canSubmit
-            }
-          )}
+          className={clsx({
+            ["!cursor-default"]: !canSubmit,
+            ["cursor-pointer"]: canSubmit,
+          })}
           disabled={!canSubmit}
         >
           Post comment

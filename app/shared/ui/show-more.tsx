@@ -25,7 +25,6 @@ export const ShowMore = ({
 
   useEffect(
     () => setShouldDisplay(ref.current!.scrollHeight >= maxHeight),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [maxHeight]
   );
 

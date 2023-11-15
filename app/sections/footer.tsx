@@ -10,7 +10,7 @@ export const Footer = ({ className }: FooterProps) => {
         "text-center",
         "text-sm",
         "text-zinc-400",
-        "pt-6",
+        "py-6",
         "border-t-[1px] border-zinc-300/50",
         className && className
       )}

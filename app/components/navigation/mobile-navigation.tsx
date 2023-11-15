@@ -39,7 +39,7 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       </button>
       <div
         className={clsx(
-          "fixed inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10",
+          "fixed inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10 overflow-hidden",
           opened && "opacity-100 inset-0"
         )}
       >
