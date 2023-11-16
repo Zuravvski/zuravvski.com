@@ -6,8 +6,9 @@ import { useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { Chip, DevIcon, DevIconType } from "../../components";
 import { WithChildren } from "../../types/with-children";
+import { Chip } from "@/app/components/chip";
+import { DevIcon, DevIconType } from "@/app/components/dev-icon";
 
 interface Skill {
   icon: DevIconType;

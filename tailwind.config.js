@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -14,5 +16,14 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-text-fill"),
+    plugin(function ({ addVariant, e }) {
+      addVariant('not-first', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`not-first${separator}${className}`)}:not(:first-child)`
+        })
+      })
+    }),
+  ],
 }

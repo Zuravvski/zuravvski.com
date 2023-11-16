@@ -9,9 +9,9 @@ import {
 import clsx from "clsx";
 
 import { OfferItem } from "./offer-item";
-import { Heading } from "../../components";
 import { Stylizable } from "../../types/stylizable";
 import { forwardRef } from "react";
+import { Heading } from "@/app/components/heading";
 
 type OfferProps = Stylizable<{}>;
 

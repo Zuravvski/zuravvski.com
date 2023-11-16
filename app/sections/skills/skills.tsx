@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 
-import { Heading } from "../../components";
-import { Stylizable } from "../../types/stylizable";
 import { SkillItem } from "./skill-item";
+import { Heading } from "@/app/components/heading";
+import { Stylizable } from "@/app/types/stylizable";
 
 type SkillsProps = Stylizable;
 

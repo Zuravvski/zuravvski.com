@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { ExperienceItem } from "./experience-item";
 import { Stylizable } from "../../types/stylizable";
-import { Heading } from "../../components";
+import { Heading } from "@/app/components/heading";
 
 type ExperienceProps = Stylizable;
 
