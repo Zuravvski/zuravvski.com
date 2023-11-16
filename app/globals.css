@@ -36,7 +36,7 @@
 }
 
 .blog-article a::after {
-  content: '';
+  content: "";
   @apply absolute left-0 bottom-[1px] w-full h-[2px] transition-colors bg-teal-500/60 hover:bg-teal-500;
 }
 
@@ -46,12 +46,10 @@
 
 .blog-article h2 {
   @apply text-2xl text-zinc-200 font-semibold;
-  
 }
 
 .blog-article h3 {
   @apply text-xl text-zinc-200 font-semibold;
-  
 }
 
 .blog-article h4 {
@@ -60,7 +58,6 @@
 
 .blog-article h5 {
   @apply text-base text-zinc-200 font-semibold;
-  
 }
 
 .blog-article ul {
@@ -79,27 +76,42 @@
   @apply rounded-t-lg py-3 px-4 font-serif;
 }
 
-.blog-article .wp-block-kevinbatdorf-code-block-pro > span[role=button] {
+.blog-article .wp-block-kevinbatdorf-code-block-pro > span[role="button"] {
   @apply !block absolute top-[7px] right-3 transition-colors !text-zinc-300/40;
 }
 
-.blog-article .wp-block-kevinbatdorf-code-block-pro > span[role=button]:hover {
+.blog-article
+  .wp-block-kevinbatdorf-code-block-pro
+  > span[role="button"]:hover {
   @apply !text-zinc-300;
 }
 
 .blog-article .wp-block-kevinbatdorf-code-block-pro > pre {
-  @apply rounded-b-lg py-3 px-4;
+  @apply rounded-b-lg py-3 pr-4 pl-3;
 }
 
-.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers > pre .line {
+.blog-article
+  .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers
+  > pre
+  .line {
   counter-increment: step;
 }
 
-.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover > pre .line {
+.blog-article
+  .wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover
+  > pre
+  .line {
   @apply inline-block w-full hover:bg-zinc-800;
 }
 
-.blog-article .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers > pre .line::before {
+.blog-article
+  .wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers
+  > pre
+  .line::before {
   content: counter(step);
-  @apply mr-3 text-zinc-300/40;
+  @apply mr-3 text-zinc-300/40 text-right inline-block w-4;
+}
+
+.blog-article .code-block-pro-copy-button > svg {
+  @apply pointer-events-none;
 }

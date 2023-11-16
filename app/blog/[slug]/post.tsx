@@ -19,7 +19,8 @@ import {
   PostFragment,
 } from "@/app/gql/graphql";
 import { getPostAuthor } from "../data-access/author";
-import { BackButton } from "@/app/shared/ui";
+import { BackButton, ShareButton } from "@/app/shared/ui";
+import { PostContent } from "./post-content";
 
 interface PostProps {
   post: PostFragment;
@@ -36,7 +37,10 @@ export const Post = ({ post }: PostProps) => {
 
   return (
     <div>
-      <BackButton className="mb-5" />
+      <div className="mb-5 flex items-center justify-between">
+        <BackButton />
+        <ShareButton />
+      </div>
       <header>
         <Heading as="h1" text={post.title} className="mb-4" />
       </header>
@@ -65,10 +69,7 @@ export const Post = ({ post }: PostProps) => {
         featuredImage={post.featuredImage?.node as FeaturedImageFragment}
         className="mb-4"
       />
-      <article
-        className="space-y-6 blog-article mb-4"
-        dangerouslySetInnerHTML={{ __html: post.content! }}
-      ></article>
+      {post.content && <PostContent className="mb-4" text={post.content} />}
       <div className="mt-8 mb-4 bg-zinc-100/10 w-full h-[1px]"></div>
       {!!post.categories?.nodes.length && (
         <ul className="gap-0.5 md:gap-1 flex flex-wrap">
