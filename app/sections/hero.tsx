@@ -5,13 +5,15 @@ import { forwardRef } from "react";
 import { Stylizable } from "../types/stylizable";
 import { Dots } from "../components/dots";
 import { Chip } from "../components/chip";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 type HeroProps = Stylizable;
 
 export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
   return (
     <section
-      data-anchor='about'
+      data-anchor="about"
       ref={ref}
       className={clsx(
         "grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12",
@@ -44,11 +46,17 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
           Hi! My name is Michał Żurawski and I am ready to turn your next dream
           initiative into reality!
         </p>
-        <p className="mt-6 space-y-7 text-base">
+        <p className="mt-6 text-base">
           I bring over 7 years of expertise in web technologies to the table. If
           you are looking for a top-tier software developer with a
           specialization in .NET and the latest JavaScript frameworks like React
           and Angular, you are in the right place.
+        </p>
+        <p className="space-x-2">
+          <span>Drop me a line at:</span>
+          <a href="mailto:michal@zuravvski.com" className="text-teal-500">
+            michal@zuravvski.com
+          </a>
         </p>
       </div>
     </section>

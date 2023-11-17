@@ -8,6 +8,7 @@ import clsx from "clsx";
 
 import { Stylizable } from "../types/stylizable";
 import { useEffect, useRef, useState } from "react";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
 
 type HeaderProps = Stylizable<{
   navigation: React.ReactNode;
@@ -54,6 +55,14 @@ export const Header = ({
         <div className="flex items-center justify-end space-x-2">
           <div className="lg:hidden">{mobileNavigation}</div>
           <ul className="text-xl flex space-x-2 items-center">
+            <li className="group w-10 h-10 flex justify-center items-center ring-1 ring-white/10 transition hover:ring-white/20 rounded-full bg-zinc-800/90 cursor-pointer">
+              <Link href="mailto:michal@zuravvski.com">
+                <FontAwesomeIcon
+                  icon={faAt}
+                  className="text-zinc-400 group-hover:text-zinc-100 transition-colors"
+                />
+              </Link>
+            </li>
             <li className="group w-10 h-10 flex justify-center items-center ring-1 ring-white/10 transition hover:ring-white/20 rounded-full bg-zinc-800/90 cursor-pointer">
               <Link href="https://github.com/Zuravvski" target="_blank">
                 <FontAwesomeIcon
