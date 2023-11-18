@@ -39,8 +39,8 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       </button>
       <div
         className={clsx(
-          "fixed inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10 overflow-hidden",
-          opened && "opacity-100 inset-0",
+          "inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10 overflow-hidden",
+          opened && "fixed opacity-100 inset-0",
         )}
       >
         <div className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8">

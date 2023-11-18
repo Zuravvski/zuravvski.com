@@ -47,7 +47,11 @@ export const Post = ({ post }: PostProps) => {
       <header>
         <Heading as="h1" text={post.title} className="mb-4" />
       </header>
-      <div className="flex space-x-4 text-sm mb-4">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm mb-4">
+        <span className="flex items-center">
+          <FontAwesomeIcon icon={faUser} className="mr-2" />
+          <p>{getPostAuthor(post.author?.node)}</p>
+        </span>
         {publishedAt && (
           <span className="flex items-center">
             <FontAwesomeIcon icon={faClock} className="mr-2" />
@@ -57,10 +61,6 @@ export const Post = ({ post }: PostProps) => {
         <span className="flex items-center">
           <FontAwesomeIcon icon={faComment} className="mr-2" />
           <p>{post.comments?.nodes?.length ?? 0}</p>
-        </span>
-        <span className="flex items-center">
-          <FontAwesomeIcon icon={faUser} className="mr-2" />
-          <p>{getPostAuthor(post.author?.node)}</p>
         </span>
         <span className="flex items-center">
           <FontAwesomeIcon icon={faBookmark} className="mr-2" />

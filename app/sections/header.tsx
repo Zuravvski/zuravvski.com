@@ -53,7 +53,7 @@ export const Header = ({
         </Link>
         <div className="hidden lg:block">{navigation}</div>
         <div className="flex items-center justify-end space-x-2">
-          <div className="lg:hidden">{mobileNavigation}</div>
+          <div className="lg:hidden mr-auto md:mr-0">{mobileNavigation}</div>
           <ul className="text-xl flex space-x-2 items-center">
             <li className="group w-10 h-10 flex justify-center items-center ring-1 ring-white/10 transition hover:ring-white/20 rounded-full bg-zinc-800/90 cursor-pointer">
               <Link href="mailto:michal@zuravvski.com">
