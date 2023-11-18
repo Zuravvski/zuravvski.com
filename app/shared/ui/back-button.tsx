@@ -1,11 +1,13 @@
-"use client"
+"use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from ".";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Stylizable } from "@/app/types/stylizable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
+
+import { Stylizable } from "@/app/types/stylizable";
+
+import { Button } from ".";
 
 type BackButtonProps = Stylizable;
 
@@ -16,7 +18,7 @@ export const BackButton = ({ className }: BackButtonProps) => {
     <Button
       className={clsx(
         "!rounded-full w-8 h-8 ring-1 ring-zinc-600/40",
-        className && className
+        className && className,
       )}
       onClick={() => router.back()}
     >

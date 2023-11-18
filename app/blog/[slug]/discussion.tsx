@@ -1,19 +1,22 @@
 "use client";
 
-import { Stylizable } from "@/app/types/stylizable";
-import clsx from "clsx";
-import { Heading } from "@/app/components/heading";
-import { Comments } from "./comments";
-import { TreeHelper } from "@/app/shared/core/tree-helper";
-import { parseISO } from "date-fns";
 import { useCallback, useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button, Spinner } from "@/app/shared/ui";
+import { faInfoCircle, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
+import { parseISO } from "date-fns";
+
+import { Heading } from "@/app/components/heading";
 import { graphQlClient } from "@/app/shared/core/graphql-client";
-import { createComment } from "../data-access/comment-queries";
+import { TreeHelper } from "@/app/shared/core/tree-helper";
+import { Button, Spinner } from "@/app/shared/ui";
+import { Stylizable } from "@/app/types/stylizable";
+
 import { CommentViewModel } from "../data-access/comment";
+import { createComment } from "../data-access/comment-queries";
+
+import { Comments } from "./comments";
 
 interface FormData {
   name: string;
@@ -46,17 +49,17 @@ export const Discussion = ({
         setReplyTo(comment);
       }
     },
-    [replyTo, setReplyTo]
+    [replyTo, setReplyTo],
   );
 
   useEffect(() => {
     const processedComments = TreeHelper.toTree(
       originalComments.sort(
-        (a, b) => parseISO(a.date!).getTime() - parseISO(b.date!).getTime()
+        (a, b) => parseISO(a.date!).getTime() - parseISO(b.date!).getTime(),
       ),
       (x) => x.id,
       (x) => x.parentId,
-      "replies"
+      "replies",
     );
     setComments(processedComments);
   }, [originalComments, setComments]);
@@ -106,7 +109,7 @@ export const Discussion = ({
             {
               ["ring-teal-500/30 text-teal-500"]: submissionStatus.success,
               ["ring-rose-500/30 text-rose-500"]: !submissionStatus.success,
-            }
+            },
           )}
         >
           <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />

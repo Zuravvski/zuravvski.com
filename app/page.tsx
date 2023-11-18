@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { Navigation, MobileNavigation } from "@/app/components/navigation";
+import { MobileNavigation, Navigation } from "@/app/components/navigation";
+
 import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
   const onNavItemClick = useCallback((href: string) => {
     href = href.replace("#", "");
     const target = sectionRefs.find(
-      (x) => x.current?.getAttribute("data-anchor") === href
+      (x) => x.current?.getAttribute("data-anchor") === href,
     );
 
     if (!target?.current) {
@@ -25,7 +26,7 @@ export default function Home() {
 
     const margin = parseInt(
       window.getComputedStyle(target.current).getPropertyValue("margin-top"),
-      10
+      10,
     );
     const offset =
       target.current.getBoundingClientRect().top -

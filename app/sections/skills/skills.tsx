@@ -1,16 +1,21 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 
-import { SkillItem } from "./skill-item";
 import { Heading } from "@/app/components/heading";
 import { Stylizable } from "@/app/types/stylizable";
+
+import { SkillItem } from "./skill-item";
 
 type SkillsProps = Stylizable;
 
 export const Skills = forwardRef<HTMLElement, SkillsProps>(
   ({ className }, ref) => {
     return (
-      <section data-anchor="skills" ref={ref} className={clsx(className && className)}>
+      <section
+        data-anchor="skills"
+        ref={ref}
+        className={clsx(className && className)}
+      >
         <Heading text="What I am good at" className="mb-5 md:mb-8" />
         <div className="grid lg:grid-cols-2 gap-8">
           <SkillItem
@@ -133,5 +138,5 @@ export const Skills = forwardRef<HTMLElement, SkillsProps>(
         </div>
       </section>
     );
-  }
+  },
 );

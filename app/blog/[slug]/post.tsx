@@ -1,25 +1,28 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
   faClock,
   faComment,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { FeaturedImage } from "../components/featured-image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format, parseISO } from "date-fns";
-import { Heading } from "@/app/components/heading";
 import Link from "next/link";
+
 import { Chip } from "@/app/components/chip";
-import { Discussion } from "./discussion";
-import { getReadingTime } from "../data-access/reading-time";
+import { Heading } from "@/app/components/heading";
 import {
   CategoryFragment,
   CommentFragment,
   FeaturedImageFragment,
   PostFragment,
 } from "@/app/gql/graphql";
-import { getPostAuthor } from "../data-access/author";
 import { BackButton, ShareButton } from "@/app/shared/ui";
+
+import { FeaturedImage } from "../components/featured-image";
+import { getPostAuthor } from "../data-access/author";
+import { getReadingTime } from "../data-access/reading-time";
+
+import { Discussion } from "./discussion";
 import { PostContent } from "./post-content";
 
 interface PostProps {

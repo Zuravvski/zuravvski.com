@@ -1,5 +1,6 @@
 "use client";
 
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -10,12 +11,13 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-import { Button } from "./button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faShareNodes } from "@fortawesome/free-solid-svg-icons";
-import { useToggle } from "../hooks";
 import { ArrowContainer, Popover } from "react-tiny-popover";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { faLink, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { useToggle } from "../hooks";
+
+import { Button } from "./button";
 
 export const ShareButton = () => {
   const [isVisible, toggleVisible] = useToggle(false);
@@ -45,17 +47,26 @@ export const ShareButton = () => {
               </CopyToClipboard>
             </li>
             <li className="w-8 h-8">
-              <TwitterShareButton url={document.URL} onClick={() => toggleVisible()}>
+              <TwitterShareButton
+                url={document.URL}
+                onClick={() => toggleVisible()}
+              >
                 <TwitterIcon size={32} />
               </TwitterShareButton>
             </li>
             <li className="w-8 h-8">
-              <LinkedinShareButton url={document.URL} onClick={() => toggleVisible()}>
+              <LinkedinShareButton
+                url={document.URL}
+                onClick={() => toggleVisible()}
+              >
                 <LinkedinIcon size={32} />
               </LinkedinShareButton>
             </li>
             <li className="w-8 h-8">
-              <RedditShareButton url={document.URL} onClick={() => toggleVisible()}>
+              <RedditShareButton
+                url={document.URL}
+                onClick={() => toggleVisible()}
+              >
                 <RedditIcon size={32} />
               </RedditShareButton>
             </li>

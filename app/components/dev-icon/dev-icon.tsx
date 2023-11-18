@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import { DevIconType } from "./dev-icon-type";
 import { Tooltip } from "react-tooltip";
+import clsx from "clsx";
 import uniqueId from "lodash/uniqueId";
+
+import { DevIconType } from "./dev-icon-type";
 
 interface DevIconProps {
   id?: string;
@@ -26,7 +27,7 @@ export const DevIcon = ({
         className={clsx(
           `devicon-${icon}-plain`,
           colored && "colored",
-          "transition-colors"
+          "transition-colors",
         )}
       />
       <Tooltip id={id} />

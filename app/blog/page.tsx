@@ -1,12 +1,13 @@
-import { Navigation, MobileNavigation } from "@/app/components/navigation";
+import { MobileNavigation, Navigation } from "@/app/components/navigation";
 import { Footer, Header } from "@/app/sections";
 
-import { Archives, Categories, Posts } from "./sections";
-import { Paginator } from "./components/paginator";
-import { graphQlClient } from "../shared/core/graphql-client";
-import { getArchive, getPostsPage } from "./data-access/post-queries";
-import { SearchParams, getPagingParams } from "../shared/core";
 import { Heading } from "../components/heading";
+import { getPagingParams, SearchParams } from "../shared/core";
+import { graphQlClient } from "../shared/core/graphql-client";
+
+import { Paginator } from "./components/paginator";
+import { getArchive, getPostsPage } from "./data-access/post-queries";
+import { Archives, Categories, Posts } from "./sections";
 
 interface BlogPageProps {
   searchParams?: SearchParams;
@@ -17,7 +18,7 @@ export const revalidate = 10;
 export default async function Blog({ searchParams }: BlogPageProps) {
   const postsViewModel = await graphQlClient.request(
     getPostsPage,
-    getPagingParams(searchParams)
+    getPagingParams(searchParams),
   );
   const archiveViewModel = await graphQlClient.request(getArchive);
 

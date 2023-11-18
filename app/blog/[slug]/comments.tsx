@@ -1,7 +1,10 @@
-import { Stylizable } from "@/app/types/stylizable";
 import clsx from "clsx";
-import { Comment } from "./comment";
+
+import { Stylizable } from "@/app/types/stylizable";
+
 import { CommentViewModel } from "../data-access/comment";
+
+import { Comment } from "./comment";
 
 type CommentsProps = Stylizable<{
   comments: CommentViewModel[];
@@ -13,7 +16,7 @@ export const Comments = ({ comments, reply, className }: CommentsProps) => {
     <ul
       className={clsx(
         "list-none space-y-4 divide-y divide-zinc-100/10",
-        className && className
+        className && className,
       )}
     >
       {comments.map((comment, i) => (

@@ -1,16 +1,19 @@
-import { format, parseISO } from "date-fns";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
   faClock,
   faComment,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { format, parseISO } from "date-fns";
+import Link from "next/link";
+
 import { FeaturedImageFragment, PostPreviewFragment } from "@/app/gql/graphql";
-import { FeaturedImage } from "./featured-image";
-import { getReadingTime } from "../data-access/reading-time";
+
 import { getPostAuthor } from "../data-access/author";
+import { getReadingTime } from "../data-access/reading-time";
+
+import { FeaturedImage } from "./featured-image";
 
 interface PostPreviewProps {
   post: PostPreviewFragment;

@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import clsx from "clsx";
-import { NavigationLink } from "./navigation-link";
+import Link from "next/link";
+
 import { Stylizable } from "@/app/types/stylizable";
+
+import { NavigationLink } from "./navigation-link";
 
 type NavigationItemProps = Stylizable<{
   link: NavigationLink;
@@ -16,7 +18,7 @@ export const NavigationItem = ({ link, className }: NavigationItemProps) => {
         href={link.href}
         className={clsx(
           "relative block px-3 py-2 transition hover:text-teal-400",
-          className && className
+          className && className,
         )}
         onClick={() => link.onClick?.(link.href)}
       >

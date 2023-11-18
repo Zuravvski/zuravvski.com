@@ -1,13 +1,13 @@
-import { Heading } from "@/app/components/heading";
-import { Stylizable } from "@/app/types/stylizable";
 import { faBoxArchive } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
-
-import Link from "next/link";
 import { format, parseISO } from "date-fns";
-import { ShowMore } from "@/app/shared/ui";
+import Link from "next/link";
+
+import { Heading } from "@/app/components/heading";
 import { ArchiveQuery } from "@/app/gql/graphql";
+import { ShowMore } from "@/app/shared/ui";
+import { Stylizable } from "@/app/types/stylizable";
 
 type ArchivesProps = Stylizable<{
   archives: ArchiveQuery;
@@ -34,7 +34,7 @@ export const Archives = ({
       const actualDate = parseISO(current.date!);
       const yearMonth = new Date(
         actualDate.getFullYear(),
-        actualDate.getMonth()
+        actualDate.getMonth(),
       ).toISOString();
       aggregate.set(yearMonth, (aggregate.get(yearMonth) ?? 0) + 1);
       return aggregate;
@@ -59,7 +59,7 @@ export const Archives = ({
                 className={clsx(
                   "transition-colors hover:text-teal-500 flex items-center space-x-2",
                   entry.date.getTime() === activeArchive?.getTime() &&
-                    "text-teal-500"
+                    "text-teal-500",
                 )}
               >
                 <FontAwesomeIcon icon={faBoxArchive} />

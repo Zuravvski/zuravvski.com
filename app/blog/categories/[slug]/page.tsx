@@ -1,16 +1,17 @@
+import { Heading } from "@/app/components/heading";
 import { MobileNavigation, Navigation } from "@/app/components/navigation";
+import { CategoryFragment } from "@/app/gql/graphql";
 import { Footer, Header } from "@/app/sections";
 import {
-  Optional,
-  SearchParams,
   getPagingParams,
   graphQlClient,
+  Optional,
+  SearchParams,
 } from "@/app/shared/core";
-import { Archives, Categories, Posts } from "../../sections";
+
 import { Paginator } from "../../components/paginator";
 import { getArchive, getCategoriesPage } from "../../data-access/post-queries";
-import { Heading } from "@/app/components/heading";
-import { CategoryFragment } from "@/app/gql/graphql";
+import { Archives, Categories, Posts } from "../../sections";
 
 interface CategoryPageProps {
   params: {
@@ -29,7 +30,9 @@ export default async function Page({
   });
   const archiveViewModel = await graphQlClient.request(getArchive);
   const activeCategory: Optional<CategoryFragment> =
-    postsViewModel.categories?.nodes.find((x: CategoryFragment) => x.slug === params.slug);
+    postsViewModel.categories?.nodes.find(
+      (x: CategoryFragment) => x.slug === params.slug,
+    );
 
   return (
     <>

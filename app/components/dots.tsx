@@ -1,7 +1,8 @@
 import clsx from "clsx";
+
 import { Stylizable } from "../types/stylizable";
 
-type DotsProps = Stylizable<{ }>
+type DotsProps = Stylizable<{}>;
 
 export const Dots = ({ className }: DotsProps) => {
   return (

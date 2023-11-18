@@ -1,5 +1,6 @@
-import { PostPreview } from "../components/post-preview";
 import { GetPostsPageQuery } from "@/app/gql/graphql";
+
+import { PostPreview } from "../components/post-preview";
 
 interface PostsProps {
   posts: GetPostsPageQuery["posts"];

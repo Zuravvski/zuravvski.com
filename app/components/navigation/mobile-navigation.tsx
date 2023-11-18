@@ -3,8 +3,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import { NavigationLink } from "./navigation-link";
 import { NavigationItem } from "./navigation-item";
+import { NavigationLink } from "./navigation-link";
 
 interface MobileNavigationProps {
   links: NavigationLink[];
@@ -18,7 +18,7 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       <button
         className={clsx(
           "group flex items-center rounded-full px-4 py-2 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 backdrop-blur bg-zinc-800/90 text-zinc-200 ring-white/10 hover:ring-white/20",
-          opened && "hidden"
+          opened && "hidden",
         )}
         onClick={() => setOpen(true)}
       >
@@ -40,7 +40,7 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       <div
         className={clsx(
           "fixed inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10 overflow-hidden",
-          opened && "opacity-100 inset-0"
+          opened && "opacity-100 inset-0",
         )}
       >
         <div className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8">

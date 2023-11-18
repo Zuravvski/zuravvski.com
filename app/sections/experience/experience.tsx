@@ -1,9 +1,11 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 
-import { ExperienceItem } from "./experience-item";
-import { Stylizable } from "../../types/stylizable";
 import { Heading } from "@/app/components/heading";
+
+import { Stylizable } from "../../types/stylizable";
+
+import { ExperienceItem } from "./experience-item";
 
 type ExperienceProps = Stylizable;
 
@@ -260,5 +262,5 @@ export const Experience = forwardRef<HTMLElement, ExperienceProps>(
         </div>
       </section>
     );
-  }
+  },
 );

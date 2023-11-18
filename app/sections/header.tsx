@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
 
 import { Stylizable } from "../types/stylizable";
-import { useEffect, useRef, useState } from "react";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
 
 type HeaderProps = Stylizable<{
   navigation: React.ReactNode;
@@ -44,7 +44,7 @@ export const Header = ({
         "transition-colors duration-350 ease-in",
         sticky && "sticky top-0 bg-zinc-950 z-10 py-2",
         !sticky && "pt-8",
-        className && className
+        className && className,
       )}
     >
       <div className="lg:max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center px-8 md:px-12 mx-auto">

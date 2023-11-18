@@ -1,14 +1,15 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import Link from "next/link";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import Link from "next/link";
 
-import { WithChildren } from "../../types/with-children";
 import { Chip } from "@/app/components/chip";
 import { DevIcon, DevIconType } from "@/app/components/dev-icon";
+
+import { WithChildren } from "../../types/with-children";
 
 interface Skill {
   icon: DevIconType;
@@ -42,7 +43,7 @@ export const ExperienceItem = ({
     <h3
       className={clsx(
         "text-base tracking-tight text-zinc-400 font-semibold",
-        url && "hover:text-teal-500 cursor-pointer transition-colors"
+        url && "hover:text-teal-500 cursor-pointer transition-colors",
       )}
     >
       {name}
@@ -55,7 +56,7 @@ export const ExperienceItem = ({
         <span
           className={clsx(
             "absolute w-6 h-6 hidden md:flex items-center justify-center ring-1 ring-zinc-900/5 border border-zinc-700/50 rounded-full bg-zinc-800 left-[-36px] top-[2px]",
-            to && "text-zinc-500"
+            to && "text-zinc-500",
           )}
         >
           <FontAwesomeIcon icon={faBriefcase} className="w-3 h-3" />
@@ -95,11 +96,16 @@ export const ExperienceItem = ({
         <ul
           className={clsx(
             "text-center text-2xl flex mt-4 gap-3 flex-wrap",
-            !!tags?.length && "mt-6"
+            !!tags?.length && "mt-6",
           )}
         >
           {skills.map((skill, i) => (
-            <DevIcon key={i} icon={skill.icon} colored={hovered} tooltip={skill.tooltip}></DevIcon>
+            <DevIcon
+              key={i}
+              icon={skill.icon}
+              colored={hovered}
+              tooltip={skill.tooltip}
+            ></DevIcon>
           ))}
         </ul>
       </div>

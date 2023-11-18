@@ -1,9 +1,10 @@
 "use client";
 
-import { Stylizable } from "@/app/types/stylizable";
-import clsx from "clsx";
 import { useEffect, useRef } from "react";
-import copy from 'copy-to-clipboard';
+import clsx from "clsx";
+import copy from "copy-to-clipboard";
+
+import { Stylizable } from "@/app/types/stylizable";
 
 type PostContentProps = Stylizable<{
   text: string;
@@ -14,16 +15,22 @@ export const PostContent = ({ text, className }: PostContentProps) => {
 
   useEffect(() => {
     const copyToClipboard = (e: MouseEvent) => {
-      const code = (e.target as HTMLElement).dataset['code'];
+      const code = (e.target as HTMLElement).dataset["code"];
       if (code) {
         copy(code);
       }
-    }
+    };
 
-    const copyCodeButtons = ref.current!.querySelectorAll<HTMLButtonElement>('[data-code]');
-    copyCodeButtons.forEach(button => button.addEventListener('click',  copyToClipboard));
+    const copyCodeButtons =
+      ref.current!.querySelectorAll<HTMLButtonElement>("[data-code]");
+    copyCodeButtons.forEach((button) =>
+      button.addEventListener("click", copyToClipboard),
+    );
 
-    return () => copyCodeButtons.forEach(button => button.removeEventListener('click', copyToClipboard));
+    return () =>
+      copyCodeButtons.forEach((button) =>
+        button.removeEventListener("click", copyToClipboard),
+      );
   }, []);
 
   return (

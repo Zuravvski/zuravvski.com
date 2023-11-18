@@ -1,9 +1,12 @@
-import { format, parseISO } from "date-fns";
-import { CommentViewModel } from "../data-access/comment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage, faUser } from "@fortawesome/free-solid-svg-icons";
-import { Stylizable } from "@/app/types/stylizable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import { format, parseISO } from "date-fns";
+
+import { Stylizable } from "@/app/types/stylizable";
+
+import { CommentViewModel } from "../data-access/comment";
+
 import { Comments } from "./comments";
 
 type CommentProps = Stylizable<{

@@ -1,9 +1,11 @@
 import { MobileNavigation, Navigation } from "@/app/components/navigation";
-import { Footer, Header } from "@/app/sections";
-import { Post } from "./post";
-import { graphQlClient } from "@/app/shared/core/graphql-client";
-import { getPost } from "../data-access/post-queries";
 import { PostFragment } from "@/app/gql/graphql";
+import { Footer, Header } from "@/app/sections";
+import { graphQlClient } from "@/app/shared/core/graphql-client";
+
+import { getPost } from "../data-access/post-queries";
+
+import { Post } from "./post";
 
 interface PostPageProps {
   params: {

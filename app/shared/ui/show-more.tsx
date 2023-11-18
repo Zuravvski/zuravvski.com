@@ -1,11 +1,13 @@
 "use client";
 
-import { WithChildren } from "@/app/types/with-children";
 import { useEffect, useRef, useState } from "react";
-import { useToggle } from "../hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+
+import { WithChildren } from "@/app/types/with-children";
+
+import { useToggle } from "../hooks";
 
 const DefaultMaxHeight = 200; // px
 
@@ -25,7 +27,7 @@ export const ShowMore = ({
 
   useEffect(
     () => setShouldDisplay(ref.current!.scrollHeight >= maxHeight),
-    [maxHeight]
+    [maxHeight],
   );
 
   useEffect(() => {

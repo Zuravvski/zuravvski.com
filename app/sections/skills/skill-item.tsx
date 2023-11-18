@@ -1,4 +1,5 @@
 import { WithChildren } from "../../types/with-children";
+
 import { SkillBar } from "./skill-bar";
 
 interface KeySkill {
@@ -22,12 +23,14 @@ export const SkillItem = ({
   skills,
   related,
   children,
-  primaryBackgroundClass = 'bg-teal-600',
-  primaryTextClass = 'text-teal-500'
+  primaryBackgroundClass = "bg-teal-600",
+  primaryTextClass = "text-teal-500",
 }: SkillItemProps) => {
   return (
     <div className="bg-zinc-900 border border-zinc-700/40 rounded-lg p-4 md:p-8">
-      <span className={`${primaryTextClass} bg-zinc-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2`}>
+      <span
+        className={`${primaryTextClass} bg-zinc-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2`}
+      >
         <svg
           className="w-2.5 h-2.5 mr-1.5"
           aria-hidden="true"

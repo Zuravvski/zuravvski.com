@@ -1,12 +1,12 @@
-import Image from "next/image";
-import clsx from "clsx";
 import { forwardRef } from "react";
-
-import { Stylizable } from "../types/stylizable";
-import { Dots } from "../components/dots";
-import { Chip } from "../components/chip";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
+import Image from "next/image";
+
+import { Chip } from "../components/chip";
+import { Dots } from "../components/dots";
+import { Stylizable } from "../types/stylizable";
 
 type HeroProps = Stylizable;
 
@@ -17,7 +17,7 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
       ref={ref}
       className={clsx(
         "grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12",
-        className && className
+        className && className,
       )}
     >
       <div className="lg:ml-auto lg:order-1">

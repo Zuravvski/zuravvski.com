@@ -1,11 +1,11 @@
-import { Heading } from "@/app/components/heading";
-import { Stylizable } from "@/app/types/stylizable";
-import { Chip } from "@/app/components/chip";
 import clsx from "clsx";
-
 import Link from "next/link";
-import { ShowMore } from "@/app/shared/ui";
+
+import { Chip } from "@/app/components/chip";
+import { Heading } from "@/app/components/heading";
 import { CategoryFragment, Maybe } from "@/app/gql/graphql";
+import { ShowMore } from "@/app/shared/ui";
+import { Stylizable } from "@/app/types/stylizable";
 
 type CategoriesProps = Stylizable<{
   categories: CategoryFragment[];
@@ -34,7 +34,7 @@ export const Categories = ({
                     className={clsx(
                       "transition-colors bg-none bg-zinc-700/90 hover:bg-zinc-700 inline-block",
                       category.slug === activeCategory &&
-                        "bg-zinc-700 text-teal-500"
+                        "bg-zinc-700 text-teal-500",
                     )}
                   />
                 </Link>
