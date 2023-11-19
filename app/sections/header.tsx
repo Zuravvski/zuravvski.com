@@ -5,6 +5,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import debounce from "lodash/debounce";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,10 +25,10 @@ export const Header = ({
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = debounce(() => {
       const clientHeight = ref.current?.clientHeight ?? 0;
       setSticky(window.scrollY >= clientHeight);
-    };
+    });
 
     handleScroll();
     if (ref.current) {

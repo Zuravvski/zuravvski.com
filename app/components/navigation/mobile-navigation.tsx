@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
+
+import { useOnClickOutside } from "@/app/shared/hooks";
 
 import { NavigationItem } from "./navigation-item";
 import { NavigationLink } from "./navigation-link";
@@ -12,6 +14,12 @@ interface MobileNavigationProps {
 
 export const MobileNavigation = ({ links }: MobileNavigationProps) => {
   const [opened, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useOnClickOutside(ref, () => {
+    if (opened) {
+      setOpen(false);
+    }
+  });
 
   return (
     <>
@@ -39,11 +47,14 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       </button>
       <div
         className={clsx(
-          "inset-x-0 backdrop-blur-sm bg-black/80 transition-opacity opacity-0 z-10 overflow-hidden",
-          opened && "fixed opacity-100 inset-0",
+          "fixed inset-0 max-h-0 overflow-hidden transition-all backdrop-blur-sm bg-black/80 z-10",
+          opened && "inset-0 max-h-full",
         )}
       >
-        <div className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8">
+        <div
+          ref={ref}
+          className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8"
+        >
           <div className="flex justify-between mb-8">
             <p>Navigation</p>
             <svg
@@ -69,8 +80,8 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
                 link={{
                   ...link,
                   onClick: () => {
-                    link.onClick?.(link.href);
                     setOpen(false);
+                    link.onClick?.(link.href);
                   },
                 }}
                 className="px-0 py-0"
