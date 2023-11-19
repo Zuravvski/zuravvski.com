@@ -47,48 +47,50 @@ export const MobileNavigation = ({ links }: MobileNavigationProps) => {
       </button>
       <div
         className={clsx(
-          "fixed inset-0 max-h-0 overflow-hidden transition-all backdrop-blur-sm bg-black/80 z-10",
+          "fixed max-h-0 overflow-hidden transition-all backdrop-blur-sm bg-black/80 z-10",
           opened && "inset-0 max-h-full",
         )}
       >
-        <div
-          ref={ref}
-          className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8"
-        >
-          <div className="flex justify-between mb-8">
-            <p>Navigation</p>
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              className="h-6 w-6 text-zinc-400"
-              onClick={() => setOpen(false)}
-            >
-              <path
-                d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-            </svg>
+        {opened && (
+          <div
+            ref={ref}
+            className="rounded-lg ring-1 bg-zinc-900 ring-zinc-800 fixed inset-x-4 top-8 p-8"
+          >
+            <div className="flex justify-between mb-8">
+              <p>Navigation</p>
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-6 w-6 text-zinc-400"
+                onClick={() => setOpen(false)}
+              >
+                <path
+                  d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </svg>
+            </div>
+            <ul className="flex flex-col font-medium -my-2 divide-y text-base divide-zinc-100/5 text-zinc-300">
+              {links.map((link, i) => (
+                <NavigationItem
+                  key={`${link.href}-${i}`}
+                  link={{
+                    ...link,
+                    onClick: () => {
+                      setOpen(false);
+                      link.onClick?.(link.href);
+                    },
+                  }}
+                  className="px-0 py-0"
+                />
+              ))}
+            </ul>
           </div>
-          <ul className="flex flex-col font-medium -my-2 divide-y text-base divide-zinc-100/5 text-zinc-300">
-            {links.map((link, i) => (
-              <NavigationItem
-                key={`${link.href}-${i}`}
-                link={{
-                  ...link,
-                  onClick: () => {
-                    setOpen(false);
-                    link.onClick?.(link.href);
-                  },
-                }}
-                className="px-0 py-0"
-              />
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
     </>
   );

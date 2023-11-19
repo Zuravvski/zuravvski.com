@@ -26,7 +26,7 @@ export const PostPreview = ({ post }: PostPreviewProps) => {
 
   return (
     <article className="relative group">
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
+      <div className="absolute -inset-x-4 -inset-y-6 z-[-1] scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"></div>
       <Link href={`/blog/${post.slug}`} className="isolate">
         <h2 className="text-zinc-100 text-xl font-semibold block mb-2 break-words">
           {post.title}

@@ -52,7 +52,7 @@ export const Header = ({
         <Link href="/" className="hidden md:block">
           <Image src={"/logo.png"} alt="Logo" width={200} height={100} />
         </Link>
-        <div className="hidden lg:block">{navigation}</div>
+        <div className="hidden lg:flex">{navigation}</div>
         <div className="flex items-center justify-end space-x-2">
           <div className="lg:hidden mr-auto md:mr-0">{mobileNavigation}</div>
           <ul className="text-xl flex space-x-2 items-center">
