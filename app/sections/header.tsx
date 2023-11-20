@@ -57,14 +57,6 @@ export const Header = ({
           <div className="lg:hidden mr-auto md:mr-0">{mobileNavigation}</div>
           <ul className="text-xl flex space-x-2 items-center">
             <li className="group w-10 h-10 flex justify-center items-center ring-1 ring-white/10 transition hover:ring-white/20 rounded-full bg-zinc-800/90 cursor-pointer">
-              <Link href="mailto:michal@zuravvski.com">
-                <FontAwesomeIcon
-                  icon={faAt}
-                  className="text-zinc-400 group-hover:text-zinc-100 transition-colors"
-                />
-              </Link>
-            </li>
-            <li className="group w-10 h-10 flex justify-center items-center ring-1 ring-white/10 transition hover:ring-white/20 rounded-full bg-zinc-800/90 cursor-pointer">
               <Link href="https://github.com/Zuravvski" target="_blank">
                 <FontAwesomeIcon
                   icon={faGithub}

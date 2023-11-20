@@ -12,7 +12,6 @@ export const SplashScreen = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("Visited");
     const handleAnchorClick = (event: MouseEvent) => {
       const targetUrl = (event.currentTarget as HTMLAnchorElement).href;
       const currentUrl = window.location.href;
