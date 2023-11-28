@@ -2,16 +2,28 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { SplashScreen } from "./shared/ui";
+import { getHomepageSeo } from "./blog/data-access/seo-queries";
+import { graphQlClient } from "./shared/core";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Michał Żurawski | Software Developer",
-  description: "My personal website",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const response = await graphQlClient.request(getHomepageSeo);
+
+  return {
+    title: response.seo?.meta?.homepage?.title,
+    description: response.seo?.meta?.homepage?.description,
+    openGraph: {
+      type: "website",
+      images:
+        response.seo?.openGraph?.frontPage?.image?.mediaDetails?.sizes?.map(
+          (x) => x!.sourceUrl!,
+        ) ?? [],
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -21,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, "bg-zinc-900 text-zinc-400")}>
-        <SplashScreen />
         {children}
       </body>
     </html>
