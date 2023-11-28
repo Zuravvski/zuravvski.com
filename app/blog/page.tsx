@@ -1,13 +1,19 @@
-import { MobileNavigation, Navigation } from "@/app/components/navigation";
-import { Footer, Header } from "@/app/sections";
-
-import { Heading } from "../components/heading";
-import { getPagingParams, SearchParams } from "../shared/core";
-import { graphQlClient } from "../shared/core/graphql-client";
-
-import { Paginator } from "./components/paginator";
-import { getArchive, getPostsPage } from "./data-access/post-queries";
-import { Archives, Categories, Posts } from "./sections";
+import { getArchive, getPostsPage } from "@/lib/blog";
+import { Archives } from "@/lib/blog/post/archives";
+import { Categories } from "@/lib/blog/post/categories";
+import { Posts } from "@/lib/blog/post/posts";
+import {
+  getPagingParams,
+  graphQlClient,
+  SearchParams,
+} from "@/lib/shared/core";
+import {
+  Footer,
+  Header,
+  MobileNavigation,
+  Navigation,
+} from "@/lib/shared/layout";
+import { Heading, Paginator } from "@/lib/shared/ui";
 
 interface BlogPageProps {
   searchParams?: SearchParams;

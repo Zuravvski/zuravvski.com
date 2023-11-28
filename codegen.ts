@@ -1,14 +1,13 @@
-
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   overwrite: true,
   schema: "http://zuravvski.local/graphql",
-  documents: "app/**/*.tsx",
+  documents: ["app/**/*.tsx", "lib/**/*.tsx"],
   generates: {
-    "app/gql/": {
+    "lib/gql/": {
       preset: "client",
-      plugins: []
+      plugins: [],
     },
   },
   ignoreNoDocuments: true,

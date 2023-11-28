@@ -2,9 +2,13 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { MobileNavigation, Navigation } from "@/app/components/navigation";
-
-import { Experience, Footer, Header, Hero, Offer, Skills } from "./sections";
+import { Experience, Hero, Offer, Skills } from "@/lib/home";
+import {
+  Footer,
+  Header,
+  MobileNavigation,
+  Navigation,
+} from "@/lib/shared/layout";
 
 export default function Home() {
   const sectionRefs = [

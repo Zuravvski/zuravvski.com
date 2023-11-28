@@ -1,17 +1,21 @@
-import { Heading } from "@/app/components/heading";
-import { MobileNavigation, Navigation } from "@/app/components/navigation";
-import { CategoryFragment } from "@/app/gql/graphql";
-import { Footer, Header } from "@/app/sections";
+import { getArchive, getCategoriesPage } from "@/lib/blog";
+import { Archives } from "@/lib/blog/post/archives";
+import { Categories } from "@/lib/blog/post/categories";
+import { Posts } from "@/lib/blog/post/posts";
+import { CategoryFragment } from "@/lib/gql/graphql";
 import {
   getPagingParams,
   graphQlClient,
   Optional,
   SearchParams,
-} from "@/app/shared/core";
-
-import { Paginator } from "../../components/paginator";
-import { getArchive, getCategoriesPage } from "../../data-access/post-queries";
-import { Archives, Categories, Posts } from "../../sections";
+} from "@/lib/shared/core";
+import {
+  Footer,
+  Header,
+  MobileNavigation,
+  Navigation,
+} from "@/lib/shared/layout";
+import { Heading, Paginator } from "@/lib/shared/ui";
 
 interface CategoryPageProps {
   params: {

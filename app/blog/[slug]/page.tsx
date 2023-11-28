@@ -1,11 +1,13 @@
-import { MobileNavigation, Navigation } from "@/app/components/navigation";
-import { PostFragment } from "@/app/gql/graphql";
-import { Footer, Header } from "@/app/sections";
-import { graphQlClient } from "@/app/shared/core/graphql-client";
-
-import { getPost } from "../data-access/post-queries";
-
-import { Post } from "./post";
+import { getPost } from "@/lib/blog";
+import { Post } from "@/lib/blog/post/post";
+import { PostFragment } from "@/lib/gql/graphql";
+import { graphQlClient } from "@/lib/shared/core";
+import {
+  Footer,
+  Header,
+  MobileNavigation,
+  Navigation,
+} from "@/lib/shared/layout";
 
 interface PostPageProps {
   params: {

@@ -1,8 +1,8 @@
 import { parseISO } from "date-fns";
 import { MetadataRoute } from "next";
 
-import { getSitemap } from "./blog/data-access/sitemap-queries";
-import { graphQlClient } from "./shared/core";
+import { getSitemap } from "@/lib/home";
+import { graphQlClient } from "@/lib/shared/core";
 
 export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicSitemap = await graphQlClient.request(getSitemap);

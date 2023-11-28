@@ -2,12 +2,14 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { getHomepageSeo } from "./blog/data-access/seo-queries";
-import { graphQlClient } from "./shared/core";
+import { getHomepageSeo } from "@/lib/home";
+import { graphQlClient } from "@/lib/shared/core";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const revalidate = 30;
 
 export async function generateMetadata(): Promise<Metadata> {
   const response = await graphQlClient.request(getHomepageSeo);
