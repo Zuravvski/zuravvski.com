@@ -1,9 +1,12 @@
 import { format } from "date-fns";
 
-import { getArchive, getArchivesPage } from "@/lib/blog";
-import { Archives } from "@/lib/blog/post/archives";
-import { Categories } from "@/lib/blog/post/categories";
-import { Posts } from "@/lib/blog/post/posts";
+import {
+  Archives,
+  Categories,
+  getArchive,
+  getArchivesPage,
+  Posts,
+} from "@/lib/blog";
 import {
   getPagingParams,
   graphQlClient,

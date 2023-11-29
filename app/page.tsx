@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { Experience, Hero, Offer, Skills } from "@/lib/home";
 import {
@@ -47,39 +47,26 @@ export default function Home() {
     }
   }, [onNavItemClick]);
 
+  const links = useMemo(
+    () => [
+      { href: "#about", name: "About", onClick: onNavItemClick },
+      { href: "#offer", name: "Offer", onClick: onNavItemClick },
+      {
+        href: "#experience",
+        name: "Experience",
+        onClick: onNavItemClick,
+      },
+      { href: "#skills", name: "Skills", onClick: onNavItemClick },
+      { href: "/blog", name: "Blog" },
+    ],
+    [onNavItemClick],
+  );
+
   return (
     <>
       <Header
-        navigation={
-          <Navigation
-            links={[
-              { href: "#about", name: "About", onClick: onNavItemClick },
-              { href: "#offer", name: "Offer", onClick: onNavItemClick },
-              {
-                href: "#experience",
-                name: "Experience",
-                onClick: onNavItemClick,
-              },
-              { href: "#skills", name: "Skills", onClick: onNavItemClick },
-              { href: "/blog", name: "Blog" },
-            ]}
-          />
-        }
-        mobileNavigation={
-          <MobileNavigation
-            links={[
-              { href: "#about", name: "About", onClick: onNavItemClick },
-              { href: "#offer", name: "Offer", onClick: onNavItemClick },
-              {
-                href: "#experience",
-                name: "Experience",
-                onClick: onNavItemClick,
-              },
-              { href: "#skills", name: "Skills", onClick: onNavItemClick },
-              { href: "/blog", name: "Blog" },
-            ]}
-          />
-        }
+        navigation={<Navigation links={links} />}
+        mobileNavigation={<MobileNavigation links={links} />}
       ></Header>
       <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-0 md:py-8 px-8 md:px-12">
         <main className="md:pl-3 space-y-16 mb-8 lg:mb-16">

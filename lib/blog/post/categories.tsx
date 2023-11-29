@@ -30,9 +30,9 @@ export const Categories = ({
                   <Chip
                     text={`#${category.name}`}
                     className={clsx(
-                      "transition-colors bg-none bg-zinc-700/90 hover:bg-zinc-700 inline-block",
+                      "transition-colors bg-none bg-zinc-800 inline-block",
                       category.slug === activeCategory &&
-                        "bg-zinc-700 text-teal-500",
+                        "bg-zinc-800 text-teal-500",
                     )}
                   />
                 </Link>

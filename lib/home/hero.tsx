@@ -26,6 +26,7 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
             height={320}
             sizes="(min-width: 1024px) 32rem, 20rem"
             className="grayscale aspect-square object-cover"
+            loading="lazy"
           />
           <div className="z-[-1] absolute inset-0 bg-[#030303] rounded-3xl"></div>
           <Dots className="hidden md:block absolute w-[20px] left-[0.5rem] bottom-[3rem] fill-slate-200" />

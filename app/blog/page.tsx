@@ -1,7 +1,11 @@
-import { getArchive, getPostsPage } from "@/lib/blog";
-import { Archives } from "@/lib/blog/post/archives";
-import { Categories } from "@/lib/blog/post/categories";
-import { Posts } from "@/lib/blog/post/posts";
+import {
+  Archives,
+  blogLinks,
+  Categories,
+  getArchive,
+  getPostsPage,
+  Posts,
+} from "@/lib/blog";
 import {
   getPagingParams,
   graphQlClient,
@@ -31,34 +35,8 @@ export default async function Blog({ searchParams }: BlogPageProps) {
   return (
     <>
       <Header
-        navigation={
-          <Navigation
-            links={[
-              { href: "/#about", name: "About" },
-              { href: "/#offer", name: "Offer" },
-              {
-                href: "/#experience",
-                name: "Experience",
-              },
-              { href: "/#skills", name: "Skills" },
-              { href: "/blog", name: "Blog" },
-            ]}
-          />
-        }
-        mobileNavigation={
-          <MobileNavigation
-            links={[
-              { href: "/#about", name: "About" },
-              { href: "/#offer", name: "Offer" },
-              {
-                href: "/#experience",
-                name: "Experience",
-              },
-              { href: "/#skills", name: "Skills" },
-              { href: "/blog", name: "Blog" },
-            ]}
-          />
-        }
+        navigation={<Navigation links={blogLinks} />}
+        mobileNavigation={<MobileNavigation links={blogLinks} />}
       ></Header>
       <div className="lg:max-w-6xl container mx-auto flex flex-col min-h-screen py-0 md:py-8 px-8 md:px-12">
         <div className="grid lg:grid-cols-4 md:pl-3 my-8 lg:my-16 lg:gap-16">

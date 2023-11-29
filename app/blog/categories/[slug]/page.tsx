@@ -1,7 +1,10 @@
-import { getArchive, getCategoriesPage } from "@/lib/blog";
-import { Archives } from "@/lib/blog/post/archives";
-import { Categories } from "@/lib/blog/post/categories";
-import { Posts } from "@/lib/blog/post/posts";
+import {
+  Archives,
+  Categories,
+  getArchive,
+  getCategoriesPage,
+  Posts,
+} from "@/lib/blog";
 import { CategoryFragment } from "@/lib/gql/graphql";
 import {
   getPagingParams,

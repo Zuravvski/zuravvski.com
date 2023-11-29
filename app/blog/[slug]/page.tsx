@@ -1,5 +1,4 @@
-import { getPost } from "@/lib/blog";
-import { Post } from "@/lib/blog/post/post";
+import { getPost, Post } from "@/lib/blog";
 import { PostFragment } from "@/lib/gql/graphql";
 import { graphQlClient } from "@/lib/shared/core";
 import {

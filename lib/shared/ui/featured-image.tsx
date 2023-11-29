@@ -28,6 +28,7 @@ export const FeaturedImage = ({
       height={+size.height!}
       alt={postTitle}
       className={clsx("w-full", className && className)}
+      loading="lazy"
     />
   );
 };
