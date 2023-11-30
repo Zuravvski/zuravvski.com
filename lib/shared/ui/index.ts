@@ -9,3 +9,4 @@ export * from "./dots";
 export * from "./heading";
 export * from "./paginator";
 export * from "./featured-image";
+export * from "./loaded-image";

@@ -1,9 +1,8 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
-import Image from "next/image";
 
 import { Stylizable } from "../shared/types/stylizable";
-import { Chip, Dots } from "../shared/ui";
+import { Chip, Dots, LoadedImage, Spinner } from "../shared/ui";
 
 type HeroProps = Stylizable;
 
@@ -19,14 +18,14 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(({ className }, ref) => {
     >
       <div className="lg:ml-auto lg:order-1">
         <div className="relative rotate-3 md:ml-10 h-auto max-w-xs">
-          <Image
+          <LoadedImage
             src="/profile.png"
             alt="profile"
             width={320}
             height={320}
             sizes="(min-width: 1024px) 32rem, 20rem"
-            className="grayscale aspect-square object-cover"
-            loading="lazy"
+            className={clsx("grayscale aspect-square object-cover")}
+            priority
           />
           <div className="z-[-1] absolute inset-0 bg-[#030303] rounded-3xl"></div>
           <Dots className="hidden md:block absolute w-[20px] left-[0.5rem] bottom-[3rem] fill-slate-200" />

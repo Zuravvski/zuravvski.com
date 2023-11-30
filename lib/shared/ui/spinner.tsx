@@ -1,12 +1,14 @@
 import clsx from "clsx";
 
-interface SpinnerProps {
-  size?: "sm" | "md" | "lg";
-}
+import { Stylizable } from "../types";
 
-export const Spinner = ({ size = "md" }: SpinnerProps) => {
+type SpinnerProps = Stylizable<{
+  size?: "sm" | "md" | "lg";
+}>;
+
+export const Spinner = ({ size = "md", className }: SpinnerProps) => {
   return (
-    <div role="status">
+    <div role="status" className={clsx(className && className)}>
       <svg
         aria-hidden="true"
         className={clsx("animate-spin text-gray-600 fill-teal-600", {

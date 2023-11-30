@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import Image from "next/image";
 
 import { FeaturedImageFragment, Maybe } from "@/lib/gql/graphql";
 
 import { Stylizable } from "../types/stylizable";
+
+import { LoadedImage } from "./loaded-image";
 
 type FeaturedImageProps = Stylizable<{
   postTitle: string;
@@ -22,13 +23,13 @@ export const FeaturedImage = ({
   const size = featuredImage.mediaDetails.sizes[0]!;
 
   return (
-    <Image
+    <LoadedImage
       src={size.sourceUrl!}
       width={+size.width!}
       height={+size.height!}
       alt={postTitle}
       className={clsx("w-full", className && className)}
-      loading="lazy"
+      priority
     />
   );
 };
