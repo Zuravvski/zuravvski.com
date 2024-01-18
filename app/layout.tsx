@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -36,6 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(inter.className, "bg-zinc-900 text-zinc-400")}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
